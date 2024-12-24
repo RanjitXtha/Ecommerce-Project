@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@layer components{
+  .padding{
+    @apply px-[3rem] py-[1rem]
+  }
+
+  .buttons{
+    @apply bg-black text-white py-[0.7rem] px-[1rem] rounded-3xl my-[2rem]
+  }
+}
