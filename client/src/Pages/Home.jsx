@@ -14,7 +14,7 @@ const Home = () => {
         <Services />
         <Category />
         <NewArrivals />
-        <Trending />
+        {/* <Trending /> */}
     </div>
   )
 }
