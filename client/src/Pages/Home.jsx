@@ -1,8 +1,10 @@
 import React from 'react'
-import Header from '../Components/Header'
-import Hero from '../Components/Hero'
-import Services from '../Components/Services'
-import Category from '../Components/Category'
+import Header from '../Sections/Header'
+import Hero from '../Sections/Hero'
+import Services from '../Sections/Services'
+import Category from '../Sections/Category'
+import NewArrivals from '../Sections/NewArrivals'
+import Trending from '../Sections/Trending'
 
 const Home = () => {
   return (
@@ -11,6 +13,8 @@ const Home = () => {
         <Hero />
         <Services />
         <Category />
+        <NewArrivals />
+        <Trending />
     </div>
   )
 }

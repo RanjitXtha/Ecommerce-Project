@@ -6,12 +6,61 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
+
+
+  .inverted-border::after , .inverted-border::before{
+    position: absolute; 
+    content:'';
+    width:2rem;
+    height:1rem;
+  }
+
+  .inverted-border::before{
+    left:-2rem;
+    border-top-right-radius: 1rem;
+    box-shadow: 15px 0px white;
+  } 
+
+
+  .inverted-border::after{
+    right:-2rem;
+    border-top-left-radius: 1rem;
+    box-shadow: -15px 0px white;
+  
+  } 
+
+  img{
+    width:100%;
+    height:100%;
+    object-fit: contain;
+  }
+
+  .category-cards img{
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    }
+
 @layer components{
   .padding{
-    @apply px-[3rem] py-[1rem]
+    @apply px-[4rem] py-[1rem]
+  }
+
+  .margin{
+    @apply mx-[4rem] py-[3rem]
   }
 
   .buttons{
-    @apply bg-black text-white py-[0.7rem] px-[1rem] rounded-3xl my-[2rem]
+    @apply bg-black text-white py-[0.5rem] px-[1rem] rounded-3xl 
   }
+
+  .category-cards {
+    @apply relative hover:w-[32rem] hover:max-w-[32rem] w-[22rem] h-[28rem] transition-all bg-customGrey rounded-2xl overflow-hidden;
+  }
+
+  .title{
+    @apply text-xl mb-8 border-b-[2px] border-black pb-2 inline-flex
+  }
+
 }
+
