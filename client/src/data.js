@@ -1,3 +1,21 @@
+ import slimjeans1 from './assets/Images/Products/slimjeans1.avif';
+ import slimjeans2 from './assets/Images/Products/slimjeans2.avif';
+ import slimjeans3 from './assets/Images/Products/slimjeans3.avif';
+ 
+import saintlaurent1 from './assets/Images/Products/saintlaurent1.webp';
+import saintlaurent2 from './assets/Images/Products/saintlaurent2.avif';
+import saintlaurent3 from './assets/Images/Products/saintlaurent3.jpg';
+
+import guccibag1 from './assets/Images/Products/guccibag1.jpg';
+import guccibag2 from './assets/Images/Products/guccibag2.jpg';
+import guccibag3 from './assets/Images/Products/guccibag3.jpg';
+
+import burberrytrenchcoat1 from './assets/Images/Products/burberrytrenchcoat1.webp';
+import burberrytrenchcoat2 from './assets/Images/Products/burberrytrenchcoat2.webp';
+import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.webp';
+
+ 
+ 
  const products = [
     {
       id: "1",
@@ -8,7 +26,7 @@
       tags: ["men", "winter", "casual"],
       sizes: ["S", "M", "L", "XL"],
       colors: ["Black", "Navy", "Gray"],
-      image: "https://via.placeholder.com/200",
+      image: [slimjeans1 , slimjeans2 , slimjeans3],
       rating: 4.8,
       reviews: 150,
       stock: 25,
@@ -24,7 +42,7 @@
       tags: ["men", "winter", "outerwear"],
       sizes: ["M", "L", "XL"],
       colors: ["Black", "Brown"],
-      image: "https://via.placeholder.com/200",
+      image: [saintlaurent1,saintlaurent2,saintlaurent3],
       rating: 4.9,
       reviews: 120,
       stock: 10,
@@ -40,7 +58,7 @@
       tags: ["women", "accessories", "luxury"],
       sizes: ["One Size"],
       colors: ["Brown", "Beige"],
-      image: "https://via.placeholder.com/200",
+      image: [guccibag1,guccibag2,guccibag3],
       rating: 5.0,
       reviews: 80,
       stock: 5,
@@ -49,19 +67,19 @@
     },
     {
       id: "4",
-      name: "Gucci Wool Scarf",
-      description: "A soft and warm scarf with a classic Gucci design.",
-      price: 599.99,
-      category: "Accessories",
-      tags: ["accessories", "winter", "luxury"],
-      sizes: ["One Size"],
-      colors: ["Gray", "Red"],
-      image: "https://via.placeholder.com/200",
-      rating: 4.7,
-      reviews: 50,
-      stock: 15,
+      name: "Burberry Trench Coat",
+      description: "A timeless trench coat with Burberry's signature check lining.",
+      price: 2499.99,
+      category: "Men",
+      tags: ["men", "winter", "outerwear"],
+      sizes: ["M", "L", "XL"],
+      colors: ["Beige", "Black"],
+      image: [burberrytrenchcoat1,burberrytrenchcoat2,burberrytrenchcoat3],
+      rating: 4.9,
+      reviews: 70,
+      stock: 12,
       newArrival: false,
-      discount: 5,
+      discount: 10,
     },
     {
       id: "5",
@@ -113,20 +131,21 @@
     },
     {
       id: "8",
-      name: "Burberry Trench Coat",
-      description: "A timeless trench coat with Burberry's signature check lining.",
-      price: 2499.99,
-      category: "Men",
-      tags: ["men", "winter", "outerwear"],
-      sizes: ["M", "L", "XL"],
-      colors: ["Beige", "Black"],
+      name: "Gucci Wool Scarf",
+      description: "A soft and warm scarf with a classic Gucci design.",
+      price: 599.99,
+      category: "Accessories",
+      tags: ["accessories", "winter", "luxury"],
+      sizes: ["One Size"],
+      colors: ["Gray", "Red"],
       image: "https://via.placeholder.com/200",
-      rating: 4.9,
-      reviews: 70,
-      stock: 12,
+      rating: 4.7,
+      reviews: 50,
+      stock: 15,
       newArrival: false,
-      discount: 10,
+      discount: 5,
     },
+   
     {
       id: "9",
       name: "Dolce & Gabbana Floral Maxi Dress",

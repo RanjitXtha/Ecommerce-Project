@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -8,10 +9,10 @@ const Header = () => {
         </div>
 
         <div className='flex gap-6'>
-            <nav>HOME</nav>
-            <nav>SHOP</nav>
-            <nav>ABOUT US</nav>
-            <nav>CONTACT</nav>
+            <nav><Link to="/home">HOME</Link></nav>
+            <nav><Link to="/shop">SHOP</Link></nav>
+            <nav><Link to="/about-us">ABOUT US</Link></nav>
+            <nav><Link to="/contact">CONTACT</Link></nav>
         </div>
 
         <div className=' bg-black text-white rounded-3xl py-[0.1rem] px-[1rem]'>

@@ -12,7 +12,11 @@ module.exports = {
         textColor: '#2E2E2E',
         lightColor: '#616161',
         customWhite: '#F7F7F7',
-      }
+        customBlue: '#cad5da',
+      },
+      fontFamily: {
+        poppins: ['Poppins', 'serif'],
+      },
     },
   },
   plugins: [],

@@ -5,20 +5,20 @@ import { RiSecurePaymentFill } from "react-icons/ri";
 
 const Services = () => {
   return (
-    <div>
-        <div className="my-[3rem] flex justify-evenly font-bold text-xl padding">
+    <div className='margin'>
+        <div className="flex justify-evenly font-semibold text-xl">
                 <div className='flex gap-4'>
-                    <RiCustomerService2Fill className='bg-black text-white text-5xl'/>
+                    <RiCustomerService2Fill className='text-5xl'/>
                     <p className='max-w-[12rem]'>Support 24/7 Contact us 12345</p>
                 </div>
 
                 <div className='flex gap-4'>
-                    <RiSecurePaymentFill className='bg-black text-white text-5xl'/>
+                    <RiSecurePaymentFill className='text-5xl'/>
                     <p className='max-w-[12rem]'>Secure payment services</p>
                 </div>
 
                 <div className='flex gap-4'>
-                    <TbTruckDelivery className='bg-black text-white text-5xl'/>
+                    <TbTruckDelivery className='text-5xl'/>
                     <p className='max-w-[12rem]'>Free and Fast Shipping</p>
                 </div>
             </div>

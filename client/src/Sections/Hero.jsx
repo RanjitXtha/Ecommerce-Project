@@ -3,7 +3,7 @@ import hero from '../assets/Images/hero.png'
 import hero1 from '../assets/Images/hero1.png'
 const Hero = () => {
   return (
-    <div className='relative padding  flex gap-6 bg-customGrey mx-[3rem] rounded-3xl'>
+    <div className='relative padding  flex gap-6 bg-customGrey margin rounded-3xl'>
         <div className='w-[50%]'>
             <p className=" text-3xl md:text-4xl lg:text-6xl mt-[3rem]  md:mt-[4.5rem] font-bold">
                 DIVE INTO THE WORLD OF FASHION AND LUXURY

@@ -1,11 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/gilroy-heavy');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/proxima-nova-condensed');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-gilroy{
+  font-family: 'Gilroy-Heavy', sans-serif;
+}
+
+.poppins-thin {
+  font-family: "Poppins", serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.poppins-extralight {
+  font-family: "Poppins", serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.poppins-light {
+  font-family: "Poppins", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+html , body{
+  font-family: 'Poppins', serif;
+  font-weight: 400;
+}
 
 
   .inverted-border::after , .inverted-border::before{
@@ -32,7 +101,7 @@
   img{
     width:100%;
     height:100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   .category-cards img{
@@ -47,7 +116,7 @@
   }
 
   .margin{
-    @apply mx-[4rem] py-[3rem]
+    @apply mx-[3rem] mb-[6rem]
   }
 
   .buttons{
@@ -59,8 +128,23 @@
   }
 
   .title{
-    @apply text-xl mb-8 border-b-[2px] border-black pb-2 inline-flex
+    @apply text-xl mb-12 border-black pb-1 inline-flex relative font-semibold
   }
 
+
+
+}
+
+.title::after{
+  position: absolute;
+  bottom: -5px;
+  content: '';
+  background-color: black;
+  width:50%;
+  left:0;
+  right:0;
+  margin: 0 auto;
+  height:3px;
+  border-radius: 3rem;
 }
 
