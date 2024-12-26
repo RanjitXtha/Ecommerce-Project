@@ -19,7 +19,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
  const products = [
     {
       id: "1",
-      name: "Versace Slim Fit Jeans",
+      title: "Versace Slim Fit Jeans",
       description: "Luxury slim-fit jeans for a sleek and stylish look.",
       price: 299.99,
       category: "Men",
@@ -35,7 +35,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     },
     {
       id: "2",
-      name: "Saint Laurent Leather Biker Jacket",
+      title: "Saint Laurent Leather Biker Jacket",
       description: "Iconic leather jacket for a bold and stylish statement.",
       price: 1999.99,
       category: "Men",
@@ -51,7 +51,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     },
     {
       id: "3",
-      name: "Louis Vuitton Monogram Handbag",
+      title: "Louis Vuitton Monogram Handbag",
       description: "A luxurious handbag with the classic monogram design.",
       price: 3499.99,
       category: "Accessories",
@@ -67,7 +67,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     },
     {
       id: "4",
-      name: "Burberry Trench Coat",
+      title: "Burberry Trench Coat",
       description: "A timeless trench coat with Burberry's signature check lining.",
       price: 2499.99,
       category: "Men",
@@ -83,7 +83,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     },
     {
       id: "5",
-      name: "Prada Chunky Knit Sweater",
+      title: "Prada Chunky Knit Sweater",
       description: "A cozy and stylish chunky knit sweater.",
       price: 899.99,
       category: "Women",
@@ -99,7 +99,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     },
     {
       id: "6",
-      name: "Chanel Silk Evening Dress",
+      title: "Chanel Silk Evening Dress",
       description: "A stunning evening dress crafted from fine silk.",
       price: 4999.99,
       category: "Women",
@@ -115,7 +115,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     },
     {
       id: "7",
-      name: "Hermès Leather Belt",
+      title: "Hermès Leather Belt",
       description: "A classic Hermès leather belt with iconic buckle design.",
       price: 799.99,
       category: "Accessories",
@@ -131,7 +131,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     },
     {
       id: "8",
-      name: "Gucci Wool Scarf",
+      title: "Gucci Wool Scarf",
       description: "A soft and warm scarf with a classic Gucci design.",
       price: 599.99,
       category: "Accessories",
@@ -148,7 +148,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
    
     {
       id: "9",
-      name: "Dolce & Gabbana Floral Maxi Dress",
+      title: "Dolce & Gabbana Floral Maxi Dress",
       description: "A vibrant floral dress perfect for summer occasions.",
       price: 1999.99,
       category: "Women",
@@ -164,7 +164,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     },
     {
       id: "10",
-      name: "Tom Ford Classic Sunglasses",
+      title: "Tom Ford Classic Sunglasses",
       description: "Elegant sunglasses for a stylish look.",
       price: 599.99,
       category: "Accessories",
@@ -180,7 +180,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     },
     {
       id: "11",
-      name: "Moncler Puffer Jacket",
+      title: "Moncler Puffer Jacket",
       description: "A warm and lightweight puffer jacket for cold weather.",
       price: 1799.99,
       category: "Men",
@@ -196,7 +196,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     },
     {
       id: "12",
-      name: "Rolex Oyster Perpetual Watch",
+      title: "Rolex Oyster Perpetual Watch",
       description: "A classic luxury watch with timeless appeal.",
       price: 10999.99,
       category: "Accessories",
@@ -212,7 +212,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     },
     {
       id: "13",
-      name: "Balenciaga Oversized Hoodie",
+      title: "Balenciaga Oversized Hoodie",
       description: "A statement hoodie with a relaxed oversized fit.",
       price: 899.99,
       category: "Men",
@@ -228,7 +228,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     },
     {
       id: "14",
-      name: "Armani Cashmere Cardigan",
+      title: "Armani Cashmere Cardigan",
       description: "A luxurious cardigan crafted from soft cashmere.",
       price: 1299.99,
       category: "Women",
@@ -244,7 +244,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     },
     {
       id: "15",
-      name: "Fendi Embossed Leather Tote",
+      title: "Fendi Embossed Leather Tote",
       description: "A stylish leather tote with embossed Fendi logo.",
       price: 2499.99,
       category: "Accessories",
