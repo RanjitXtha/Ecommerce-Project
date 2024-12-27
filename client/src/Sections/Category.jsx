@@ -34,7 +34,7 @@ const Category = () => {
           categories.map((category,key)=>(
             <div className='group category-cards'>
               <div className='w-full h-full'>
-                <img src={category.image} alt="men" className=' group-hover:translate-x-[40%] transition-all' />
+                <img src={category.image} alt="men" className=' group-hover:translate-x-[30%] transition-all' />
               </div>
                 
             

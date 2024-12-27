@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const ItemCards = ({product}) => {
   return (
-    <Link to={`/product/${product.id}`}>
-    <div className='max-w-[20rem] h-full'>
+    <Link to={`/product/${product.id}`} className='w-full'>
+    <div className='min-w-[16rem] max-w-[24rem] h-full'>
     
-          <img src={product.image[0]} className=' h-[20rem] bg-customGrey rounded-3xl' alt={product.id} />
+          <img src={product.image[0]} className='h-[22rem] bg-customGrey rounded-3xl' alt={product.id} />
        
         <div className='py-3 text-sm font-semibold flex flex-col justify-between min-h-[5rem]'>
             <p>{product.title}</p>

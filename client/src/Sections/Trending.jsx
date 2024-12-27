@@ -8,16 +8,16 @@ const Trending = () => {
         const productData = shopData.products;
         const [products , setProducts] = useState([])
         useEffect(()=>{
-            setProducts(productData.filter(item=>item.trending ).slice(0,4));
+            setProducts(productData.filter(item=>item.trending ).slice(0,6));
         },[])
 
   return (
     <section className='margin'>
         <span className='flex justify-center'><h1 className='title '>Trending</h1></span>
-        <div className='grid grid-cols-4 gap-6'> 
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-6'> 
             {
                 products.map((product,key)=>(
-                    <div key={key}>
+                    <div key={key} className='flex flex-col items-center'>
                         <ItemCards product={product} />
                     </div>
                     

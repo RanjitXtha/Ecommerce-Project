@@ -16,8 +16,8 @@ const Home = () => {
          <Services />
         <Category />
        <NewArrivals />
-       {/* <Collections />
-        <Trending /> */}
+       <Collections /> 
+         <Trending />
       
     </div>
   )
