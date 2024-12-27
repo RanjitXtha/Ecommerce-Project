@@ -27,9 +27,9 @@ const Category = () => {
     }
   ]
   return (
-    <div className="margin">
+    <div className="margin w-full">
       <span className='flex justify-center'><h1 className='title'>Our Categories</h1></span>
-      <div className='grid grid-flow-col gap-4 justify-evenly'>
+      <div className='grid grid-cols-3 gap-x-4 justify-evenly'>
         {
           categories.map((category,key)=>(
             <div className='group category-cards'>
@@ -44,12 +44,12 @@ const Category = () => {
               <button className='buttons my-2'>Shop Now</button>
             </div>
 
-            <div className='inverted-border absolute w-[40%] h-[2.2rem] bg-white  top-0 left-0 rounded-b-2xl right-0 mx-auto'>
+            <div className='inverted-border absolute w-[40%] h-[2.4rem] bg-white  top-0 left-0 rounded-b-2xl right-0 mx-auto'>
                 
             </div>
 
             <div className='absolute w-[35%] h-[2rem] text-center bg-white  top-0 left-0 rounded-b-2xl right-0 mx-auto'>
-                <p className='text-md text-white py-[3px] bg-black rounded-3xl'>{category.title}</p>
+                <p className='text-md text-white py-[5px] bg-black rounded-3xl'>{category.title}</p>
             </div>
             
           </div>

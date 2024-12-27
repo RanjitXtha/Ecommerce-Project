@@ -1,8 +1,12 @@
 import React from 'react';
-import products from '../data';
 import ItemCards from '../Components/ItemCards';
+import { useContext } from 'react';
+import { ShopContext } from '../assets/Context/ShopContext';
 
 const Shop = () => {
+    const shopData = useContext(ShopContext);
+    const productData = shopData.products;
+    const products = productData.slice(0,4);
   return (
     <section className='margin'>
         <div className='h-[3rem]'>

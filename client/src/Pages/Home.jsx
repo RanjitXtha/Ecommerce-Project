@@ -10,14 +10,14 @@ import Footer from '../Sections/Footer'
 
 const Home = () => {
   return (
-    <div>
+    <div className='max-container'>
        
         <Hero />
-        <Services />
+         <Services />
         <Category />
-        <NewArrivals />
+       {/*<NewArrivals />
         <Collections />
-        <Trending />
+        <Trending /> */}
       
     </div>
   )

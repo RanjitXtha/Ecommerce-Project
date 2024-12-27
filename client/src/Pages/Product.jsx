@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import products from '../data';
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 
 const Product = () => {
     const {productId} = useParams();
@@ -11,8 +13,17 @@ const Product = () => {
     const [currentIndex ,setCurrentIndex] = useState(0);
     const [color , setColor] = useState(null);
     const [size , setSize] = useState(null);
+    const [quantity , setQuantity] = useState(1);
+
+    const handleQuantity=(a)=>{
+        if(a === -1 && quantity > 1){
+            setQuantity(quantity-1);
+        }else if( a === 1 && quantity < product.stock){
+            setQuantity(quantity+1);
+        }
+    }
   return (
-    <section className='margin grid grid-cols-[1.4fr_2fr] gap-10'>
+    <section className='mt-[3rem] margin grid grid-cols-[1.4fr_2fr] gap-10'>
         <div>
             <div className='w-[35rem] h-[38rem]'>
                 <img className='rounded-3xl' src={product.image[currentIndex]} alt="" />
@@ -63,6 +74,12 @@ const Product = () => {
                 }
             </div>
             <p className='my-[1rem] text-sm'>{product.stock} in stock</p>
+            <div className='flex justify-between font-semibold items-center w-[8rem] h-[3rem] rounded-3xl bg-customGrey'>
+                <button onClick={()=>handleQuantity(1)} className='w-[2.5rem] h-full flex justify-center items-center'><IoIosArrowUp  /></button>
+                    {quantity}
+                <button onClick={()=>handleQuantity(-1)} className='w-[2.5rem] h-full flex justify-center items-center'><IoIosArrowDown /></button>
+            </div>
+            <button className='buttons'>Add to Cart</button>
         </div>
     </section>
   )

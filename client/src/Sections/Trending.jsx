@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ItemCards from '../Components/ItemCards'
-import productdata from '../data.js';
+import { useContext } from 'react';
+import { ShopContext } from '../assets/Context/ShopContext.jsx';
 
 const Trending = () => {
-    const products = productdata.slice(0,4);
+        const shopData = useContext(ShopContext);
+        const productData = shopData.products;
+        const [products , setProducts] = useState([])
+        useEffect(()=>{
+            setProducts(productData.filter(item=>item.trending ).slice(0,4));
+        },[])
+
   return (
     <section className='margin'>
         <span className='flex justify-center'><h1 className='title '>Trending</h1></span>

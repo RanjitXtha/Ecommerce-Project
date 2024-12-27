@@ -110,13 +110,23 @@ html , body{
     object-fit:contain;
     }
 
+  a.active .underline{
+    opacity:1;
+  }
+
+
 @layer components{
+  .max-container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
   .padding{
-    @apply px-[4rem] py-[1rem]
+    @apply px-[2rem] sm:px-[3rem] md:px-[4rem] py-[1rem]
   }
 
   .margin{
-    @apply mx-[3rem] mb-[6rem]
+    @apply mx-[1rem] sm:mx-[2rem] md:mx-[3rem] mb-[6rem]
   }
 
   .buttons{
@@ -124,7 +134,7 @@ html , body{
   }
 
   .category-cards {
-    @apply relative hover:w-[32rem] hover:max-w-[32rem] w-[22rem] h-[28rem] transition-all bg-customGrey rounded-2xl overflow-hidden;
+    @apply relative hover:w-[32rem] hover:max-w-[32rem] w-[18rem] lg:w-[22rem] h-[28rem] transition-all bg-customGrey rounded-2xl overflow-hidden;
   }
 
   .title{

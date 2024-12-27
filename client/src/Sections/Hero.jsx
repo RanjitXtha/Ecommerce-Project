@@ -1,11 +1,12 @@
 import React from 'react'
 import hero from '../assets/Images/hero.png'
 import hero1 from '../assets/Images/hero1.png'
+
 const Hero = () => {
   return (
-    <div className='relative padding  flex gap-6 bg-customGrey margin rounded-3xl'>
-        <div className='w-[50%]'>
-            <p className=" text-3xl md:text-4xl lg:text-6xl mt-[3rem]  md:mt-[4.5rem] font-bold">
+    <div className='relative padding  flex flex-col md:flex-row  gap-6 bg-customGrey margin rounded-3xl'>
+        <div className='w-full md:w-[50%]'>
+            <p className="text-4xl lg:text-6xl mt-[3rem]  md:mt-[4.5rem] font-bold">
                 DIVE INTO THE WORLD OF FASHION AND LUXURY
             </p>
 
@@ -17,7 +18,7 @@ const Hero = () => {
             <button className='buttons mt-[2rem] mb-[1rem]'>Explore Now</button>
         </div>
 
-        <div className='w-[50%]  h-full my-auto'>
+        <div className='w-full md:w-[50%]  h-full my-auto'>
             <img src={hero1} alt="hero" />
         </div>
     </div>
