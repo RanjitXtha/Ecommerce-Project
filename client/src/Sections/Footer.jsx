@@ -6,7 +6,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className='w-full flex items-center gap-y-12  flex-col md:flex-row max-container min-h-[15rem] padding bg-black text-white py-[4rem] gap-8'>
+    <div className='max-container flex items-center gap-y-12  flex-col md:flex-row  min-h-[15rem] w-full padding bg-black text-white py-[4rem] gap-8'>
         <div className='text-3xl flex-1 font-extrabold'>
             LUXURY
         </div>

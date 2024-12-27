@@ -134,7 +134,7 @@ html , body{
   }
 
   .category-cards {
-    @apply relative hover:w-[32rem] hover:max-w-[32rem] w-[18rem] lg:w-[22rem] h-[28rem] transition-all bg-customGrey rounded-2xl overflow-hidden;
+    @apply relative flex-1  h-[25rem] min-w-[18rem] max-w-[22rem] transition-all bg-customGrey rounded-2xl overflow-hidden;
   }
 
   .title{

@@ -15,8 +15,8 @@ const Home = () => {
         <Hero />
          <Services />
         <Category />
-       {/*<NewArrivals />
-        <Collections />
+       <NewArrivals />
+       {/* <Collections />
         <Trending /> */}
       
     </div>
