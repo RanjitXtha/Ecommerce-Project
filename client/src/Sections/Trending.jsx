@@ -17,10 +17,9 @@ const Trending = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between gap-6'> 
             {
                 products.map((product,key)=>(
-                    <div key={key} className='flex flex-col items-center'>
-                        <ItemCards product={product} />
+                    <div  key={key} className='flex justify-center'>
+                        <ItemCards  product={product} />
                     </div>
-                    
                 ))
             }
         </div>
