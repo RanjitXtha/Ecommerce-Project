@@ -31,7 +31,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     reviews: 150,
     stock: 25,
     trending: true,
-    discount: 10,
+    discount: 0,
     information: {
       additionalDetails: "Crafted with precision stitching and premium materials, these jeans offer both comfort and style. Perfect for any occasion, whether casual or semi-formal, they provide a tailored look that enhances your silhouette.",
       materials: "98% Cotton, 2% Elastane",
@@ -119,7 +119,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     reviews: 60,
     stock: 20,
     trending: false,
-    discount: 10,
+    discount: 12,
     information: {
       additionalDetails: "This chunky knit sweater is the epitome of cozy luxury, perfect for colder months. The relaxed fit ensures comfort, while the high-end materials elevate your casual look, making it a must-have for any wardrobe.",
       materials: "70% Wool, 30% Cashmere",
@@ -141,7 +141,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     reviews: 40,
     stock: 8,
     trending: true,
-    discount: 20,
+    discount: 0,
     information: {
       additionalDetails: "This evening dress from Chanel is designed with luxurious silk fabric, offering an elegant and timeless look. Ideal for formal events, it combines exquisite craftsmanship with modern sophistication.",
       materials: "100% Silk",
@@ -185,7 +185,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     reviews: 50,
     stock: 15,
     trending: false,
-    discount: 5,
+    discount: 0,
     information: {
       additionalDetails: "Made with soft wool, this scarf from Gucci is perfect for staying warm during the winter while adding a touch of luxury to your ensemble. The classic design ensures it pairs well with any outfit.",
       materials: "100% Wool",
@@ -207,7 +207,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     reviews: 30,
     stock: 10,
     trending: true,
-    discount: 15,
+    discount: 0,
     information: {
       additionalDetails: "This floral maxi dress from Dolce & Gabbana exudes elegance and femininity, perfect for garden parties or evening events. The lightweight fabric keeps you cool while the vibrant pattern adds a pop of color.",
       materials: "50% Silk, 50% Polyester",
@@ -250,7 +250,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     reviews: 130,
     stock: 50,
     trending: false,
-    discount: 20,
+    discount: 22,
     information: {
       additionalDetails: "These Balenciaga Triple S sneakers offer a bold, oversized look that has become synonymous with luxury streetwear. Featuring a multi-layered design, they provide both comfort and style.",
       materials: "Leather, Mesh",
@@ -272,7 +272,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     reviews: 60,
     stock: 12,
     trending: false,
-    discount: 10,
+    discount: 0,
     information: {
       additionalDetails: "This Celine tote is a classic piece, featuring a sleek, minimalist design that pairs well with any outfit. The high-quality leather ensures longevity and durability, while the spacious interior offers practicality.",
       materials: "100% Leather",
@@ -316,7 +316,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     reviews: 40,
     stock: 8,
     trending: true,
-    discount: 20,
+    discount: 0,
     information: {
       additionalDetails: "The Fendi Peekaboo bag is a statement piece with its signature opening design, allowing a glimpse of its luxurious interior. Made from the finest leather, it exudes elegance and sophistication.",
       materials: "Leather",
