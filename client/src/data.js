@@ -89,7 +89,7 @@ import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.we
     description: "A timeless trench coat with Burberry's signature check lining.",
     price: 2499.99,
     category: "Men",
-    tags: ["men", "winter", "outerwear"],
+    tags: ["women", "winter", "outerwear"],
     sizes: ["M", "L", "XL"],
     colors: ["Beige", "Black"],
     image: [burberrytrenchcoat1, burberrytrenchcoat2, burberrytrenchcoat3],
