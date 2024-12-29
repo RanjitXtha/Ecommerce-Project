@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import products from '../data';
 import { IoIosArrowDown } from "react-icons/io";
@@ -11,14 +11,18 @@ import { ShopContext } from '../Context/ShopContext';
 const Product = () => {
     const {currency , delivery_fee , addToCart}  = useContext(ShopContext);
     const {productId} = useParams();
-    console.log(productId);
-    const product = products.find(item =>item.id === productId);
-    console.log(product);
-    
+    const [product , setProduct] = useState(null);
     const [currentIndex ,setCurrentIndex] = useState(0);
-    const [color , setColor] = useState(null);
-    const [size , setSize] = useState(null);
+    const [color , setColor] = useState('');
+    const [size , setSize] = useState('');
     const [quantity , setQuantity] = useState(1);
+
+    useEffect(()=>{
+        const product = products.find(item =>item.id === productId);
+        setProduct(product);
+    },[productId])
+    
+    
 
     const handleQuantity=(a)=>{
         if(a === -1 && quantity > 1){
@@ -27,6 +31,29 @@ const Product = () => {
             setQuantity(quantity+1);
         }
     }
+
+    const handleCart=()=>{
+        if(size === ''){
+            alert('Select sizes');
+            return;
+        }else if
+        (color === ''){
+            alert('select color');
+            return;
+        }
+        const productData = {
+            size , color , id:product.id , title:product.title , image: product.image[0] , quantity , stock:product.stock
+        }
+        addToCart(productData);
+
+    }
+
+    if(!product)
+    return(
+        <div className='margin'>
+            Loading...
+        </div>
+    )
   return (
     <section className='margin  '>
         <div className='mt-[3rem] flex flex-col md:grid md:grid-cols-[1.5fr_2fr] gap-10 max-container'>
@@ -57,9 +84,9 @@ const Product = () => {
                 {
                     product.colors.map((colors,index)=>(
                         <div>
-                            <button onClick={()=>setColor(colors)} key={index} style={{backgroundColor:`${colors}`}} className={` w-[2.5rem] h-[2.5rem] rounded-full outline-slate-800 ${color === colors?'outline-2':''}`} >
+                            <button onClick={()=>setColor(colors)} key={index} style={{backgroundColor:`${colors}`}} className={` w-[2.5rem] h-[2.5rem] rounded-full ring-gray-700 ${color === colors?' ring-2':''} `} >
                             </button>
-                            <p className='text-sm text-lightColor'>{color}</p>
+                            <p className='text-sm text-lightColor'>{colors}</p>
                         </div>
                         
                     ))
@@ -68,10 +95,10 @@ const Product = () => {
 
             <div className='flex gap-3'>
                 {
-                    product.sizes.map((size,index)=>(
+                    product.sizes.map((sizes,index)=>(
                         <div>
-                            <button onClick={()=>setSize(size)} key={index} style={{backgroundColor:`${size}`}} className='w-[2.5rem] h-[2.5rem] rounded-full border-gray-600 border-[2px]' >
-                                <p className='text-sm text-lightColor'>{size}</p>
+                            <button onClick={()=>setSize(sizes)} key={index} style={{backgroundColor:`${sizes}`}} className={`w-[2.5rem] h-[2.5rem] rounded-full border-gray-700 border-[2px] ring-gray-700 ${sizes === size?' ring-2':''}`} >
+                                <p className='text-sm text-lightColor'>{sizes}</p>
                             </button>
                             
                         </div>
@@ -86,7 +113,7 @@ const Product = () => {
                         {quantity}
                     <button onClick={()=>handleQuantity(-1)} className='w-[2.5rem] h-full flex justify-center items-center'><IoIosArrowDown /></button>
                 </div>
-                <button className='buttons bg-customOrange text-black'>Add to Cart</button>
+                <button onClick={handleCart} className='buttons bg-customOrange text-black'>Add to Cart</button>
             </div>
            
             <button className='buttons py-3 text-lg'>Buy Now</button>
