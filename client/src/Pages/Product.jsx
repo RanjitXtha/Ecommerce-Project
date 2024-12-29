@@ -27,18 +27,18 @@ const Product = () => {
         }
     }
   return (
-    <section className='margin '>
-        <div className='mt-[3rem] grid grid-cols-[1.5fr_2fr] gap-10'>
-        <div>
-            <div className='w-[35rem] h-[38rem] mb-4'>
+    <section className='margin  '>
+        <div className='mt-[3rem] flex flex-col md:grid md:grid-cols-[1.5fr_2fr] gap-10 max-container'>
+        <div className='flex flex-col gap-4'>
+            <div className='w-full h-[40rem] md:h-auto'>
                 <img className='rounded-3xl' src={product.image[currentIndex]} alt="" />
             </div>
            
-            <div className='mt-[1rem] flex w-full justify-between gap-2'>
+            <div className='grid grid-cols-3 w-full justify-between gap-2'>
                 {
                     product.image.map((pic,index)=>(
-                        <div onClick={()=>setCurrentIndex(index)} key={index} className='max-w-[12rem] h-[12rem] '>
-                            <img  className={`rounded-xl border-[2px] ${index === currentIndex?'border-black':''}`} src={pic} alt="product-imag/e" />
+                        <div onClick={()=>setCurrentIndex(index)} key={index} className='max-w-[12rem] max-h-[12rem] '>
+                            <img  className={`w-full rounded-xl border-[2px] ${index === currentIndex?'border-black':''}`} src={pic} alt="product-imag/e" />
                         </div>
                     ))
                 }
@@ -46,7 +46,7 @@ const Product = () => {
             </div>
         </div>
 
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-2 '>
             <p className='text-3xl font-semibold'>{product.title}</p>
             <p>{product.description}</p>
             <p className='text-xl font-semibold'>{currency} {product.price}</p>
@@ -97,13 +97,17 @@ const Product = () => {
             </div>  
         </div>
         </div>
-        <div>
-            <p>Information</p>
-            <p>
+        <div className='max-container'>
+            <p className='text-lg mt-8 mb-4 font-semibold text-lightColor' >Information</p>
+            <div className='flex flex-col gap-4'>
                 {
-                    
+                  Object.entries(product.information).map(([key,value])=>(
+                    <p key={key}>
+                        <p className='font-semibold mb-4 inline mr-3'>{key.slice(0,1).toUpperCase() + key.slice(1,key.length)}:</p>{value}
+                    </p>
+                  ))
                 }
-            </p>
+            </div>
         </div>
     </section>
   )
