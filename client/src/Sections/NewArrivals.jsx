@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ItemCards from '../Components/ItemCards';
-import { ShopContext } from '../assets/Context/ShopContext';
+import { ShopContext } from '../Context/ShopContext';
 
 
 const NewArrivals = () => {

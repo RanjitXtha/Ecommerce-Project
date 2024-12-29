@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import ItemCards from '../Components/ItemCards';
-import { ShopContext } from '../assets/Context/ShopContext';
+import { ShopContext } from '../Context/ShopContext';
 import { HiMenuAlt3 } from "react-icons/hi";
 import { IoSearch } from "react-icons/io5";
 import { LuMenu } from "react-icons/lu";

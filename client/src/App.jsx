@@ -12,12 +12,15 @@ import Product from './Pages/Product';
 import Orders from './Pages/Orders';
 import PlaceOrder from './Pages/PlaceOrder';
 import Cart from './Pages/Cart';
+import { ToastContainer, toast } from 'react-toastify'; 
 
 function App() {
   return (
     <div className='flex flex-col min-h-[100vh]'>
 
         <Router>
+        <ToastContainer />
+
         <Header />
         <div className='flex-1'>
           <Routes>

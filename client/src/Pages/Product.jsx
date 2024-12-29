@@ -6,9 +6,10 @@ import { IoIosArrowUp } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
 import { PiShoppingBagFill } from "react-icons/pi";
-import { ShopContext } from '../assets/Context/ShopContext';
+import { ShopContext } from '../Context/ShopContext';
+
 const Product = () => {
-    const {currency , delivery_fee} = useContext(ShopContext);
+    const {currency , delivery_fee , addToCart}  = useContext(ShopContext);
     const {productId} = useParams();
     console.log(productId);
     const product = products.find(item =>item.id === productId);
@@ -54,9 +55,9 @@ const Product = () => {
             <div className='flex gap-3'>
 
                 {
-                    product.colors.map((color,index)=>(
+                    product.colors.map((colors,index)=>(
                         <div>
-                            <button onClick={()=>setColor(color)} key={index} style={{backgroundColor:`${color}`}} className='w-[2.5rem] h-[2.5rem] rounded-full border-gray-600 border-[2px]' >
+                            <button onClick={()=>setColor(colors)} key={index} style={{backgroundColor:`${colors}`}} className={` w-[2.5rem] h-[2.5rem] rounded-full outline-slate-800 ${color === colors?'outline-2':''}`} >
                             </button>
                             <p className='text-sm text-lightColor'>{color}</p>
                         </div>

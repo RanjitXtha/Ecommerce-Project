@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ItemCards from '../Components/ItemCards'
 import { useContext } from 'react';
-import { ShopContext } from '../assets/Context/ShopContext.jsx';
+import { ShopContext } from '../Context/ShopContext';
 
 const Trending = () => {
         const shopData = useContext(ShopContext);
