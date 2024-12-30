@@ -1,7 +1,9 @@
 import React, { useContext } from 'react'
-import { ShopContext } from '../Context/ShopContext'
+import { ShopContext } from '../Context/ShopContext';
+import { useNavigate } from 'react-router-dom';
 
 const PlaceOrder = () => {
+  const navigate = useNavigate();
   const {delivery_fee , currency} = useContext(ShopContext);
   return (
     <div className='margin max-container padding'>
@@ -29,9 +31,16 @@ const PlaceOrder = () => {
             <span className='flex justify-between '><p>Subtotal: </p><p>{currency} {1000}</p></span>
             <span className='flex justify-between '><p>Delivery: </p><p>{currency} {delivery_fee}</p></span>
             <span className='flex justify-between  font-semibold my-2 p-1 border-black border-t-[1px]'><p>Total: </p><p>{1000+delivery_fee}</p></span>
+            <div>
+          <p className='mt-4 mb-2 text-lg font-semibold'>Payment Method:</p>
+          <div className='w-[6rem] h-[4rem] bg-green-600 mb-6'>
+
+          </div>
+         <button className='buttons' onClick={()=>navigate('/orders')}>Place Order</button>
+         </div>
           </div>
 
-         
+        
         </section>
     </div>
   )
