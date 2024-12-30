@@ -3,8 +3,10 @@ import { ShopContext } from '../Context/ShopContext';
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { FaTrashCan } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
+  const navigate = useNavigate();
   const {cartItems,currency , increaseQuantity , decreaseQuantity , removeFromCart , delivery_fee} = useContext(ShopContext);
   const [total , setTotal] = useState(0)
   useEffect(()=>{
@@ -56,8 +58,9 @@ const Cart = () => {
             <span className='flex justify-between  font-semibold my-2 p-1 border-black border-t-[1px]'><p>Total: </p><p>{total+delivery_fee}</p></span>
             
           </div>
-          
+          <button onClick={()=>navigate('/place-order')} className='buttons'>Check Out</button>
         </div>
+        
     </section>
   )
 }
