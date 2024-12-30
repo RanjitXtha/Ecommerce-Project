@@ -1,8 +1,44 @@
-import React from 'react'
+import React from 'react';
+import { useState } from 'react';
 
 const SignUp = () => {
+    const [email , setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
   return (
-    <div>SignUp</div>
+    <div className="">
+
+    <form className="form padding margin flex flex-col gap-4 items-center" >
+      <h1 className="text-xl font-semibold mb-4">Sign Up</h1>
+      <input
+        type="email"
+        id="email"
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
+        className="input-field"
+      />
+       <input
+        type="text"
+        id="username"
+        placeholder="Username"
+        onChange={(e) => setUsername(e.target.value)}
+        className="input-field"
+      />
+      <input
+        type="password"
+        id="password"
+        placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
+        className="input-field"
+      />
+      <button className="buttons">Submit</button>
+      {/* {error} */}
+      <p className="text-center">OR</p>
+      <a href="/signup" className="text-center hover:text-blue-500">
+        Already have an account? Log In instead. 
+      </a>
+    </form>
+  </div>
   )
 }
 

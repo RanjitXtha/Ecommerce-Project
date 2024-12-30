@@ -1,16 +1,17 @@
 import React, { useContext, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { TiThMenu } from "react-icons/ti";
 import { ShopContext } from '../Context/ShopContext';
 import { TiShoppingBag } from "react-icons/ti";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [menu , setMenu] = useState(false);
   const {totalQuantity} = useContext(ShopContext);
   return (
     <header className='flex justify-between padding max-container w-full'>
         <div className='text-2xl font-bold flex items-center gap-4'>
-            <button onClick={()=>setMenu(true)} className='block sm:hidden'><TiThMenu className='text-3xl' /></button> Luxury
+            <button onClick={()=>setMenu(true)} className='block sm:hidden'><TiThMenu className='text-3xl' /></button> <a href="/">Luxury</a>
         </div>
 
         <div className='hidden sm:flex gap-6'> 
@@ -32,7 +33,7 @@ const Header = () => {
            
           </Link>
           <div className=' bg-black text-white rounded-3xl py-[0.1rem] px-[1rem]'>
-              <button>Log In</button>
+              <button onClick={()=>navigate('/login')}>Log In</button>
           </div>
         </div>
         

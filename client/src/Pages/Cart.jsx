@@ -13,6 +13,14 @@ const Cart = () => {
     const totalPrice = cartItems.reduce((sum,item)=>sum+item.quantity*item.price,0);
     setTotal(parseFloat(totalPrice.toFixed(2)));
   },[cartItems])
+
+  if (cartItems.length ===0){
+    return(
+      <div className='max-container margin padding'>
+        There are no items in the cart....
+      </div>
+    )
+  }
   return (
     <section className='max-container margin padding'>
         <h1 className='text-xl my-4 font-semibold'>Your Cart</h1>
