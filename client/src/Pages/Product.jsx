@@ -42,7 +42,7 @@ const Product = () => {
             return;
         }
         const productData = {
-            size , color , id:product.id , title:product.title , image: product.image[0] , quantity , stock:product.stock
+            size , color , id:product.id , price:(product.price - product.discount*product.price/100).toFixed(2), title:product.title , image: product.image[0] , quantity , stock:product.stock
         }
         addToCart(productData);
 
@@ -84,7 +84,7 @@ const Product = () => {
                 {
                     product.colors.map((colors,index)=>(
                         <div>
-                            <button onClick={()=>setColor(colors)} key={index} style={{backgroundColor:`${colors}`}} className={` w-[2.5rem] h-[2.5rem] rounded-full ring-gray-700 ${color === colors?' ring-2':''} `} >
+                            <button onClick={()=>setColor(colors)} key={index} style={{backgroundColor:`${colors}`}} className={` w-[2.5rem] h-[2.5rem] rounded-full border-[1px] border-black ring-gray-700 ${color === colors?' ring-4 border-gray-700':''} `} >
                             </button>
                             <p className='text-sm text-lightColor'>{colors}</p>
                         </div>
@@ -97,7 +97,7 @@ const Product = () => {
                 {
                     product.sizes.map((sizes,index)=>(
                         <div>
-                            <button onClick={()=>setSize(sizes)} key={index} style={{backgroundColor:`${sizes}`}} className={`w-[2.5rem] h-[2.5rem] rounded-full border-gray-700 border-[2px] ring-gray-700 ${sizes === size?' ring-2':''}`} >
+                            <button onClick={()=>setSize(sizes)} key={index} style={{backgroundColor:`${sizes}`}} className={`w-[2.5rem] h-[2.5rem] rounded-full border-gray-700 border-[1px] ring-gray-700 ${sizes === size?' ring-4 border-gray-700':''}`} >
                                 <p className='text-sm text-lightColor'>{sizes}</p>
                             </button>
                             

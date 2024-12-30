@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { TiThMenu } from "react-icons/ti";
 import { ShopContext } from '../Context/ShopContext';
 import { TiShoppingBag } from "react-icons/ti";
@@ -21,10 +21,16 @@ const Header = () => {
         </div>
 
         <div className='flex items-center gap-2'>   
-          <div className='relative text-3xl  rounded-3xl '>
+          <Link to="/cart" className='relative text-3xl  rounded-3xl '>
             <TiShoppingBag  />
-            <div className='abosolute'></div>
-          </div>
+            {
+              totalQuantity !==0?
+              <div className='absolute text-sm bg-black text-white font-semibold flex items-center justify-center  w-6 h-6 rounded-full top-[-6px] right-[-6px]'>{totalQuantity}</div>
+              :null
+
+            }
+           
+          </Link>
           <div className=' bg-black text-white rounded-3xl py-[0.1rem] px-[1rem]'>
               <button>Log In</button>
           </div>
