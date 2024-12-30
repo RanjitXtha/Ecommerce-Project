@@ -123,7 +123,7 @@ html , body{
   }
 
   .input-field{
-    @apply ring-1 ring-customGrey ml-3 mr-6 py-1 px-2
+    @apply ring-1 ring-customGrey py-1 px-2
   }
 
   .padding{
