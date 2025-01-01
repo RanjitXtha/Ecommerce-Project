@@ -32,7 +32,7 @@ const Category = () => {
       <div className='flex flex-wrap  gap-x-4 gap-y-8 justify-evenly'>
         {
           categories.map((category,key)=>(
-            <div className='group category-cards'>
+            <div key={key} className='group category-cards'>
               <div className='w-full h-full'>
                 <img src={category.image} alt="men" className=' group-hover:translate-x-[30%] transition-all' />
               </div>

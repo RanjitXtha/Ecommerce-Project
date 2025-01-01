@@ -8,67 +8,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-}
-
-
-.font-playfair {
-  font-family: 'Playfair Display', serif;
-}
-
-.font-gilroy{
-  font-family: 'Gilroy-Heavy', sans-serif;
-}
-
-.poppins-thin {
-  font-family: "Poppins", serif;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.poppins-extralight {
-  font-family: "Poppins", serif;
-  font-weight: 200;
-  font-style: normal;
-}
-
-.poppins-light {
-  font-family: "Poppins", serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.poppins-regular {
-  font-family: "Poppins", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.poppins-medium {
-  font-family: "Poppins", serif;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.poppins-semibold {
-  font-family: "Poppins", serif;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.poppins-bold {
-  font-family: "Poppins", serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.poppins-extrabold {
-  font-family: "Poppins", serif;
-  font-weight: 800;
-  font-style: normal;
 }
 
 html , body{

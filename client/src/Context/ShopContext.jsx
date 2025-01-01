@@ -26,7 +26,6 @@ export const ShopContextProvider = ({ children }) => {
       if (newQuantity <= existingItem.stock) {
         existingItem.quantity = newQuantity;
         setCartItems(updatedCartItems);
-        console.log(`Increased quantity by ${productData.quantity}`);
       } else {
         console.log("Stock limit reached");
       }
@@ -69,7 +68,6 @@ export const ShopContextProvider = ({ children }) => {
   };
   
   useEffect(() => {
-    console.log("Updating total quantity...");
     const total = cartItems.reduce((sum, item) => sum + item.quantity, 0);
     setTotalQuantity(total);
   }, [cartItems]);
