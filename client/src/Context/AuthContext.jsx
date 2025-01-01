@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
     const authenticate = async () => {
       try {
         const token = localStorage.getItem("token");
-        console.log(token);
+        console.log('auth'+ token);
         if (!token) {
           console.log("No token available");
           return;
@@ -22,6 +22,7 @@ export const AuthProvider = ({ children }) => {
         });
 
         const data = await response.json();
+        console.log(data);
 
         if (!data.success) {
           console.log(data.message);
@@ -41,5 +42,11 @@ export const AuthProvider = ({ children }) => {
     authenticate();
   }, []);
 
-  return <AuthContext.Provider value={{ user, setUser }}>{children}</AuthContext.Provider>;
+  const logout = () => {
+    console.log("logging out")
+    localStorage.removeItem('token'); 
+    setUser(null); 
+  };
+
+  return <AuthContext.Provider value={{ user, setUser ,logout }}>{children}</AuthContext.Provider>;
 };

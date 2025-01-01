@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 
 const Login = () => {
   const [email , setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error , setError] = useState('')
+  const navigate = useNavigate();
 
  const handleSubmit = async(e)=>{
 
@@ -33,7 +35,11 @@ const Login = () => {
         return;
       }
 
-      console.log(data.token);
+      if(data.token){
+        localStorage.setItem('token',data.token);
+        console.log('Login Sucessful');
+        navigate('/')
+      }
 
     }catch(error){
       console.log(error);

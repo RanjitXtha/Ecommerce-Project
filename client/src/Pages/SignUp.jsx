@@ -25,7 +25,7 @@ const SignUp = () => {
           return;
         }
 
-        console.log(data.token);
+        //console.log(data.token);
 
       }catch(error){
         console.log(error)

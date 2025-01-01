@@ -2,7 +2,8 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'ecommerce-project'
 
 const authUser = async(req,res,next) =>{
-    const {token} = req.headers;
+    console.log(req.headers.authorization)
+    const token = req.headers.authorization;
 
     if(!token){
         return res.json({success:false , message:"Not Authorized Login again"})

@@ -24,7 +24,10 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/protected',authUser,(req,res)=>{
-    res.json({success:true,message:'You are authenticated',user:req.userId})
+    res.json({success:true,message:'You are authenticated',
+        user:{userId:req.userId,username:req.username}
+    }
+    )
 })
 
 app.use('/api/',userRouter);

@@ -3,11 +3,18 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { TiThMenu } from "react-icons/ti";
 import { ShopContext } from '../Context/ShopContext';
 import { TiShoppingBag } from "react-icons/ti";
+import { AuthContext } from '../Context/AuthContext';
 
 const Header = () => {
   const navigate = useNavigate();
   const [menu , setMenu] = useState(false);
   const {totalQuantity} = useContext(ShopContext);
+  const {logout , user} = useContext(AuthContext);
+
+  const handleLogOut = ()=>{
+    logout();
+    navigate('/')
+  }
   return (
     <header className='flex justify-between padding max-container w-full'>
         <div className='text-2xl font-bold flex items-center gap-4'>
@@ -32,9 +39,17 @@ const Header = () => {
             }
            
           </Link>
-          <div className=' bg-black text-white rounded-3xl py-[0.1rem] px-[1rem]'>
-              <button onClick={()=>navigate('/login')}>Log In</button>
-          </div>
+          {
+              user?
+              <div className=' bg-black text-white rounded-3xl py-[0.1rem] px-[1rem]'>
+                <button onClick={()=>navigate('/login')}>Log In</button>
+              </div>
+              :
+              <div className=' bg-black text-white rounded-3xl py-[0.1rem] px-[1rem]'>
+                <button onClick={handleLogOut} >username</button>
+              </div>
+          }
+         
         </div>
         
         

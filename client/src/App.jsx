@@ -13,6 +13,7 @@ import Orders from './Pages/Orders';
 import PlaceOrder from './Pages/PlaceOrder';
 import Cart from './Pages/Cart';
 import { ToastContainer, toast } from 'react-toastify'; 
+import HomeRoute from './ProtectedRoute/HomeRoute';
 
 function App() {
   return (
@@ -27,8 +28,8 @@ function App() {
             <Route index path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route  path="/shop" element={<Shop />} />
-            <Route  path="/login" element={<LogIn />} />
-            <Route  path="/signup" element={<SignUp />} />
+            <Route  path="/login" element={<HomeRoute><LogIn /></HomeRoute>} />
+            <Route  path="/signup" element={<HomeRoute><SignUp /></HomeRoute>} />
             <Route  path="/about" element={<About/>} />
             <Route  path="/contact" element={<Contact/>} />
             <Route  path="/product/:productId" element={<Product />} />

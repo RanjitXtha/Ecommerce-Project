@@ -22,9 +22,8 @@ const LogIn = async(req,res)=>{
         return res.json({success:false,message:'Wrong Password'})
     }
 
-    const userId = user._id;
 
-    const token = jwt.sign({userId},JWT_SECRET);
+    const token = jwt.sign({userId:user._id , username:user.username ,profilePic: user.profielPic},JWT_SECRET);
     return res.json({success:true,token});
     }catch(error){
         console.log(error);
@@ -49,7 +48,7 @@ const SignUp = async(req,res)=>{
 
         const user = await newUser.save();
         const userId = user._id;
-        const token =  jwt.sign({userId},JWT_SECRET);
+        const token = jwt.sign({userId:user._id , username:user.username ,profilePic: user.profielPic},JWT_SECRET);
         res.json({success:true,token})
     }catch(error){
         console.log(error);
