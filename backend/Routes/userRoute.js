@@ -6,6 +6,6 @@ const {LogIn , SignUp , adminLogIn} = require('../Controllers/authController');
 
 userRouter.post('/user/login',LogIn);
 userRouter.post('/user/signup',upload.single('profilePic'),SignUp);
-userRouter.post('/user/admin-login',adminLogIn);
+userRouter.post('/admin/admin-login',adminLogIn);
 
 module.exports = userRouter;

@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'ecommerce-project'
  
 const authUser = async(req,res,next) =>{
-    console.log(req.headers.authorization)
+
     const token = req.headers.authorization;
 
     if(!token){ 

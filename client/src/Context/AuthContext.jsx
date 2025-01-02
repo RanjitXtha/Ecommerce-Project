@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
     const authenticate = async () => {
       try {
         const token = localStorage.getItem("token");
-        console.log('auth'+ token);
+       
         if (!token) {
           console.log("No token available");
           return;

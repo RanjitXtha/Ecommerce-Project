@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {useNavigate} from 'react-router-dom'
+import { AuthContext } from '../Context/AuthContext';
 
 const Login = () => {
   const [email , setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error , setError] = useState('')
+  const {setUser} = useContext(AuthContext);
   const navigate = useNavigate();
 
  const handleSubmit = async(e)=>{
@@ -39,6 +41,7 @@ const Login = () => {
         localStorage.setItem('token',data.token);
         console.log('Login Sucessful');
         navigate('/')
+        navigate(0);//forces refresh of the page
       }
 
     }catch(error){

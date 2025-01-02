@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken')
 
 const userSchema = require('../Schema/userSchema');
 const JWT_SECRET = 'ecommerce-project';
-
+const ADMIN_EMAIL = 'admin@gmail.com';
+const ADMIN_PASSWORD = 'adminadmin'
 
 const LogIn = async(req,res)=>{
     
@@ -63,7 +64,19 @@ const SignUp = async(req,res)=>{
 }
 
 const adminLogIn = async(req,res)=>{
+    try{
+        const {email,password} = req.body;
+        if(email === ADMIN_EMAIL && password === ADMIN_PASSWORD){
+            const token = jwt.sign(email+password,JWT_SECRET);
+            res.json({success:true,token})
+        }else{
+            res.jjson({success:false,message:'Invalid Credentials'})
+        }
 
+    }catch(error){
+        console.log(error);
+        res.json({succss:false,message:error})
+    }
 }
 
 module.exports = {LogIn , SignUp , adminLogIn}
