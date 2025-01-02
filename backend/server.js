@@ -6,6 +6,7 @@ const path = require('path');
 const userRouter = require('./Routes/userRoute');
 const productRouter = require('./Routes/productRoute');
 const authUser  = require('./Middleware/auth');
+const adminAuth = require('./Middleware/adminAuth');
 
 
 const dbURL = 'mongodb+srv://alienshooter:alienshooterpassword_123@cluster0.rbry7.mongodb.net/ecommerceSite?retryWrites=true&w=majority&appName=Cluster0';
@@ -29,6 +30,13 @@ app.get('/',(req,res)=>{
 app.get('/protected',authUser,(req,res)=>{
     res.json({success:true,message:'You are authenticated',
         user:{userId:req.body.userId,username:req.body.username,profilePic:req.body.profilePic}
+    }
+    )
+})
+
+app.get('/admin/protected',adminAuth,(req,res)=>{
+    res.json({success:true,message:'You are authenticated as admin.',
+        user:{email:req.body.email,role:req.body.role}
     }
     )
 })

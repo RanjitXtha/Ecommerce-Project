@@ -2,7 +2,7 @@
 const addProduct = async (req,res)=>{
     
 }
-
+ 
 const getProductList = async (req,res)=>{
     
 }

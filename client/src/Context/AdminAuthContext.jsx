@@ -1,21 +1,21 @@
 import React, { createContext, useState, useEffect } from "react";
 
-export const AuthContext = createContext();
+export const AdminAuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export const AdminAuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
  
   useEffect(() => {
     const authenticate = async () => {
       try {
-        const token = localStorage.getItem("token");
-       
+        const token = localStorage.getItem("adminToken");
+        console.log("admin" + token)
         if (!token) {
           console.log("No token available");
           return;
         }
 
-        const response = await fetch("http://localhost:5000/protected", {
+        const response = await fetch("http://localhost:5000/admin/protected", {
           headers: {
             Authorization: token,
           },
@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
 
         if (!data.success) {
           console.log(data.message);
-          localStorage.removeItem("token");
+          localStorage.removeItem("adminToken");
           setUser(null);
           return;
         }
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
         setUser(data.user);
       } catch (error) {
         console.error("Authentication Error:", error);
-        localStorage.removeItem("token");
+        localStorage.removeItem("adminToken");
         setUser(null);
       }
     };
@@ -44,9 +44,9 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     console.log("logging out")
-    localStorage.removeItem('token'); 
+    localStorage.removeItem('adminToken'); 
     setUser(null); 
   };
 
-  return <AuthContext.Provider value={{ user, setUser ,logout }}>{children}</AuthContext.Provider>;
+  return <AdminAuthContext.Provider value={{ user, setUser ,logout }}>{children}</AdminAuthContext.Provider>;
 };

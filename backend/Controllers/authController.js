@@ -65,12 +65,13 @@ const SignUp = async(req,res)=>{
 
 const adminLogIn = async(req,res)=>{
     try{
+        console.log("admin running")
         const {email,password} = req.body;
         if(email === ADMIN_EMAIL && password === ADMIN_PASSWORD){
-            const token = jwt.sign(email+password,JWT_SECRET);
+            const token = jwt.sign({email , role:'admin' },JWT_SECRET);
             res.json({success:true,token})
         }else{
-            res.jjson({success:false,message:'Invalid Credentials'})
+            res.json({success:false,message:'Invalid Credentials'})
         }
 
     }catch(error){
