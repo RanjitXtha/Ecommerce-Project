@@ -13,9 +13,9 @@ const Header = () => {
 
   const handleLogOut = ()=>{
     logout();
-    navigate('/')
-    setUser(null);
+    navigate('/');
   }
+  
   return (
     <header className='flex justify-between px-[3rem]  max-container w-full'>
         <div className='text-2xl font-bold py-[1rem] flex items-center gap-4'>
