@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 const userRouter = require('./Routes/userRoute');
 const productRouter = require('./Routes/productRoute');
 const authUser  = require('./Middleware/auth');
@@ -12,6 +13,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 mongoose.connect(dbURL).then(()=>{
     app.listen(5000); 
@@ -25,7 +28,7 @@ app.get('/',(req,res)=>{
 
 app.get('/protected',authUser,(req,res)=>{
     res.json({success:true,message:'You are authenticated',
-        user:{userId:req.userId,username:req.username}
+        user:{userId:req.body.userId,username:req.body.username,profilePic:req.body.profilePic}
     }
     )
 })

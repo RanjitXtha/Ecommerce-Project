@@ -9,26 +9,27 @@ const Header = () => {
   const navigate = useNavigate();
   const [menu , setMenu] = useState(false);
   const {totalQuantity} = useContext(ShopContext);
-  const {logout , user} = useContext(AuthContext);
+  const {logout , user , setUser} = useContext(AuthContext);
 
   const handleLogOut = ()=>{
     logout();
     navigate('/')
+    setUser(null);
   }
   return (
-    <header className='flex justify-between padding max-container w-full'>
-        <div className='text-2xl font-bold flex items-center gap-4'>
+    <header className='flex justify-between px-[3rem]  max-container w-full'>
+        <div className='text-2xl font-bold py-[1rem] flex items-center gap-4'>
             <button onClick={()=>setMenu(true)} className='block sm:hidden'><TiThMenu className='text-3xl' /></button> <a href="/">Luxury</a>
         </div>
 
-        <div className='hidden sm:flex gap-6'> 
+        <div className='hidden sm:flex gap-6 py-[1rem]'> 
             <NavLink to="/home">HOME<div className='transition-all ease-in-out underline h-[3px] rounded-3xl w-[70%] mx-auto bg-black opacity-0'></div></NavLink>
             <NavLink to="/shop">SHOP<div className='transition-all ease-in-out underline h-[3px] rounded-3xl w-[70%] mx-auto bg-black opacity-0'></div></NavLink>
             <NavLink to="/about-us">ABOUT<div className='transition-all ease-in-out underline rounded-3xl h-[3px] w-[70%] mx-auto bg-black opacity-0'></div></NavLink>
             <NavLink to="/contact">CONTACT<div className='transition-all ease-in-out underline rounded-3xl h-[3px] w-[70%] mx-auto bg-black opacity-0'></div></NavLink>
         </div>
 
-        <div className='flex items-center gap-2'>   
+        <div className='flex items-center gap-2 '>   
           <Link to="/cart" className='relative text-3xl  rounded-3xl '>
             <TiShoppingBag  />
             {
@@ -40,13 +41,17 @@ const Header = () => {
            
           </Link>
           {
-              user?
-              <div className=' bg-black text-white rounded-3xl py-[0.1rem] px-[1rem]'>
+              !user?
+              <div className=' bg-black text-white rounded-3xl py-[0.3rem] px-[1rem]'>
                 <button onClick={()=>navigate('/login')}>Log In</button>
               </div>
               :
-              <div className=' bg-black text-white rounded-3xl py-[0.1rem] px-[1rem]'>
-                <button onClick={handleLogOut} >username</button>
+              <div className=' bg-black text-white rounded-3xl py-[0.3rem] px-[1rem]'>
+                <button onClick={handleLogOut} className='flex gap-3 justify-center items-center'>
+                <img src={`http://localhost:5000/uploads/${user.profilePic}`} className='w-8 ring-2 ring-white h-8 rounded-full' alt="profilePic" />
+                  {user.username}
+                  
+                </button>
               </div>
           }
          

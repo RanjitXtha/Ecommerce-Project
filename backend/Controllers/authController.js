@@ -2,7 +2,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 
 const userSchema = require('../Schema/userSchema');
-const JWT_SECRET = 'ecommerce-project'
+const JWT_SECRET = 'ecommerce-project';
+
 
 const LogIn = async(req,res)=>{
     
@@ -23,7 +24,7 @@ const LogIn = async(req,res)=>{
     }
 
 
-    const token = jwt.sign({userId:user._id , username:user.username ,profilePic: user.profielPic},JWT_SECRET);
+    const token = jwt.sign({userId:user._id , username:user.username ,profilePic: user.profilePic},JWT_SECRET);
     return res.json({success:true,token});
     }catch(error){
         console.log(error);
@@ -34,6 +35,9 @@ const LogIn = async(req,res)=>{
 const SignUp = async(req,res)=>{
     try{
         const {email,username,password} = req.body;
+        const profilePic = req.file ? req.file.filename : null;
+        console.log(profilePic + 'this is a profile')
+        console.log(username+email+profilePic);
         const userExists = await userSchema.findOne({email});
 
         if(userExists){
@@ -43,13 +47,12 @@ const SignUp = async(req,res)=>{
         const hashedPassword = await bcrypt.hash(password , salt);
 
         const newUser = new userSchema({
-            email,username,password: hashedPassword
+            email,username,password: hashedPassword,profilePic
         })
 
         const user = await newUser.save();
-        const userId = user._id;
-        const token = jwt.sign({userId:user._id , username:user.username ,profilePic: user.profielPic},JWT_SECRET);
-        res.json({success:true,token})
+        const token = jwt.sign({userId:user._id , username:user.username ,profilePic: user.profilePic},JWT_SECRET);
+    return res.json({success:true,token});
     }catch(error){
         console.log(error);
         return res.json({success:false, message:{error}})

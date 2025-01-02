@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Please provide a password'],
         minlength: 8
     },
+    profilePic: {type:String},
     cart:{
         type:Object , default:{}
     }

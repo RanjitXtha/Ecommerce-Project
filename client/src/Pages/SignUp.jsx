@@ -1,21 +1,26 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
     const [email , setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
-
+    const [profile, setProfile] = useState(null);
+    const navigate=  useNavigate();
     const handleSubmit = async(e)=>{
       e.preventDefault();
       try{
-        const userData = {email,username,password};
+        const userData = new FormData();
+        userData.append('email',email);
+        userData.append('username',username);
+        userData.append('password',password);
+        userData.append('profilePic',profile);
+
         const response = await fetch('http://localhost:5000/api/user/signup',{
           method:'POST',
-          headers:{
-              'Content-Type':'application/json'
-          },
-          body:JSON.stringify(userData)
+        
+          body:userData
         })
 
         const data = await response.json();
@@ -25,7 +30,11 @@ const SignUp = () => {
           return;
         }
 
-        //console.log(data.token);
+        if(data.token){
+          localStorage.setItem('token',data.token);
+          console.log('successfully signed IN')
+          navigate('/')
+        }
 
       }catch(error){
         console.log(error)
@@ -57,6 +66,15 @@ const SignUp = () => {
         onChange={(e) => setPassword(e.target.value)}
         className="input-field"
       />
+
+      <input
+        type="file"
+        id="profile"
+        accept="image/*" 
+        onChange={(e) => setProfile(e.target.files[0])}
+      
+      />
+      
       <button className="buttons">Submit</button>
       {/* {error} */}
       <p className="text-center">OR</p>
