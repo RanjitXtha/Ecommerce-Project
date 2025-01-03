@@ -17,6 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import HomeRoute from './ProtectedRoute/HomeRoute';
 import AdminLogin from './Pages/AdminLogin';
 import AddProduct from './Pages/AddProduct';
+import AdminRoute from './ProtectedRoute/AdminRoute';
 
 function App() {
   return (
@@ -40,9 +41,9 @@ function App() {
             <Route  path="/orders" element={<Orders/>} />
             <Route  path="/cart" element={<Cart />} />
 
-            <Route  path="/admin/home" element={<AdminHome />} />
+            <Route  path="/admin/home" element={<AdminRoute><AdminHome /></AdminRoute> } />
             <Route  path="/admin/login" element={<AdminLogin />} />
-            <Route  path="/admin/add-product" element={<AddProduct />} />
+            <Route  path="/admin/add-product" element={<AdminRoute><AddProduct /></AdminRoute>} />
           </Routes>
         </div>
         <Footer />

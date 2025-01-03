@@ -21,12 +21,33 @@ const AddProduct = () => {
   });
 
   const [images, setImages] = useState([]);
+  const [previews, setPreviews] = useState([]);
+
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files);
+
+    if (files.length + images.length > 4) {
+      alert("You can upload a maximum of 4 images.");
+      return;
+    }
+
+    const newPreviews = files.map((file) => URL.createObjectURL(file));
+    setPreviews([...previews, ...newPreviews]);
+    setImages([...images, ...files]);
+  };
+
+  const removeImage = (index) => {
+    const updatedImages = images.filter((_, i) => i !== index);
+    const updatedPreviews = previews.filter((_, i) => i !== index);
+
+    setImages(updatedImages);
+    setPreviews(updatedPreviews);
+  };
   const [newTag, setNewTag] = useState("");
 
   const categories = ["Men", "Women", "Accessories"];
   const availableSizes = ["S", "M", "L", "XL"];
   const availableColors = ["Red", "Blue", "Green", "Yellow", "Pink", "Black", "White", "Beige", "Brown", "Navy", "Gray", "Cream"];
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -88,10 +109,43 @@ const AddProduct = () => {
     setFormData((prev) => ({ ...prev, trending: !prev.trending }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
     console.log("Images:", images);
+
+    const data = new FormData();
+    data.append("title", formData.title);
+    data.append("description", formData.description);
+    data.append("price", formData.price);
+    data.append("category", formData.category);
+    data.append("tags", JSON.stringify(formData.tags));
+    data.append("sizes", JSON.stringify(formData.sizes));
+    data.append("colors", JSON.stringify(formData.colors));
+    data.append("trending", formData.trending);
+    data.append("discount", formData.discount);
+    data.append("stock", formData.stock);
+    data.append("information", JSON.stringify(formData.information));
+
+    images.forEach((image) => {
+      data.append("images", image);
+    });
+
+    try {
+      const response = await fetch("http://localhost:5000/api/admin/add-product", {
+        method: "POST",
+        body: data,
+      });
+      const result = await response.json();
+      if (result.success) {
+        alert("Product added successfully!");
+      } else {
+        alert(`Error: ${result.message}`);
+      }
+    } catch (error) {
+      console.error("Error uploading product:", error);
+      alert("Something went wrong.");
+    }
   };
 
   return (
@@ -209,6 +263,28 @@ const AddProduct = () => {
           />
         </div>
 
+         {/* Category */}
+      <div className="mb-4">
+        <label htmlFor="category" className="block font-medium mb-1">
+          Category
+        </label>
+        <select
+          id="category"
+          name="category"
+          className="border rounded-md p-2 w-full"
+          value={formData.category}
+          onChange={handleInputChange}
+          required
+        >
+          <option value="">Select Category</option>
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>
+              {cat}
+            </option>
+          ))}
+        </select>
+      </div>
+
 
         {/* Tags */}
         <div>
@@ -300,16 +376,40 @@ const AddProduct = () => {
         </div>
 
         {/* Images */}
-        <div className="flex flex-col">
-          <label className="font-medium">Images (Max 4)</label>
-          <input
-            type="file"
-            accept="image/*"
-            multiple
-            onChange={handleFileChange}
-            className="border rounded-md p-2"
-          />
-        </div>
+        <div>
+        <label htmlFor="images" className="block mb-2">
+          Upload Images (Max 4):
+        </label>
+        <input
+          type="file"
+          id="images"
+          name="images"
+          accept="image/*"
+          multiple
+          onChange={handleImageChange}
+          disabled={images.length >= 4}
+          className="border p-2"
+        />
+      </div>
+
+      <div className="flex flex-wrap gap-4">
+        {previews.map((preview, index) => (
+          <div key={index} className="relative">
+            <img
+              src={preview}
+              alt={`Preview ${index + 1}`}
+              className="w-24 h-24 object-cover rounded"
+            />
+            <button
+              type="button"
+              onClick={() => removeImage(index)}
+              className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-6 h-6"
+            >
+              X
+            </button>
+          </div>
+        ))}
+      </div>
 
         {/* Submit Button */}
         <button
