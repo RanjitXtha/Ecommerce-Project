@@ -3,17 +3,19 @@
  import slimjeans3 from './assets/Images/Products/slimjeans3.avif';
  
 import saintlaurent1 from './assets/Images/Products/saintlaurent1.webp';
-import saintlaurent2 from './assets/Images/Products/saintlaurent2.avif';
-import saintlaurent3 from './assets/Images/Products/saintlaurent3.jpg';
+import saintlaurent2 from './assets/Images/Products/saintlaurent2.png';
+import saintlaurent3 from './assets/Images/Products/saintlaurent3.png';
 
-import guccibag1 from './assets/Images/Products/guccibag1.jpg';
-import guccibag2 from './assets/Images/Products/guccibag2.jpg';
-import guccibag3 from './assets/Images/Products/guccibag3.jpg';
+import guccibag1 from './assets/Images/Products/guccibag1.png';
+import guccibag2 from './assets/Images/Products/guccibag2.png';
+import guccibag3 from './assets/Images/Products/guccibag3.png';
 
-import burberrytrenchcoat1 from './assets/Images/Products/burberrytrenchcoat1.webp';
-import burberrytrenchcoat2 from './assets/Images/Products/burberrytrenchcoat2.webp';
-import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.webp';
+import burberrytrenchcoat1 from './assets/Images/Products/burberrytrenchcoat1.png';
+import burberrytrenchcoat2 from './assets/Images/Products/burberrytrenchcoat2.png';
+import burberrytrenchcoat3 from './assets/Images/Products/burberrytrenchcoat3.png';
 
+import diorglasses from './assets/Images/Products/diorglasses.png'
+import diorglasses1 from './assets/Images/Products/diorglasses1.png'
  
  
  const products = [
