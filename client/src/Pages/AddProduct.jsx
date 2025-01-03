@@ -5,12 +5,12 @@ const AddProduct = () => {
     title: "",
     description: "",
     price: "",
+    discount: "",
     category: "",
     tags: [],
-    sizes: "",
-    colors: "",
+    sizes: [],
+    colors: [],
     trending: false,
-    discount: "",
     stock: "",
     information: {
       additionalDetails: "",
@@ -24,6 +24,8 @@ const AddProduct = () => {
   const [newTag, setNewTag] = useState("");
 
   const categories = ["Men", "Women", "Accessories"];
+  const availableSizes = ["S", "M", "L", "XL"];
+  const availableColors = ["Red", "Blue", "Green", "Yellow", "Pink", "Black", "White", "Beige", "Brown", "Navy", "Gray", "Cream"];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -64,137 +66,240 @@ const AddProduct = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSizeToggle = (size) => {
+    setFormData((prev) => ({
+      ...prev,
+      sizes: prev.sizes.includes(size)
+        ? prev.sizes.filter((s) => s !== size)
+        : [...prev.sizes, size],
+    }));
+  };
+
+  const handleColorToggle = (color) => {
+    setFormData((prev) => ({
+      ...prev,
+      colors: prev.colors.includes(color)
+        ? prev.colors.filter((c) => c !== color)
+        : [...prev.colors, color],
+    }));
+  };
+
+  const handleTrendingToggle = () => {
+    setFormData((prev) => ({ ...prev, trending: !prev.trending }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    const data = new FormData();
-    data.append("title", formData.title);
-    data.append("description", formData.description);
-    data.append("price", formData.price);
-    data.append("category", formData.category);
-    data.append("tags", JSON.stringify(formData.tags));
-    data.append("sizes", formData.sizes.split(","));
-    data.append("colors", formData.colors.split(","));
-    data.append("trending", formData.trending);
-    data.append("discount", formData.discount);
-    data.append("stock", formData.stock);
-    data.append("information", JSON.stringify(formData.information));
-
-    images.forEach((image) => {
-      data.append("images", image);
-    });
-
-    try {
-      const response = await fetch("http://localhost:5000/api/products", {
-        method: "POST",
-        body: data,
-      });
-      const result = await response.json();
-      if (response.ok) {
-        alert("Product added successfully!");
-      } else {
-        alert(`Error: ${result.message}`);
-      }
-    } catch (error) {
-      console.error("Error uploading product:", error);
-      alert("Something went wrong.");
-    }
+    console.log("Form Data:", formData);
+    console.log("Images:", images);
   };
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
       <h2 className="text-2xl font-bold mb-4 text-center">Add New Product</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="flex flex-col">
+        {/* Title and Description */}
+        <div>
           <label className="font-medium">Title</label>
           <input
             type="text"
             name="title"
-            className="border rounded-md p-2"
+            className="border rounded-md p-2 w-full"
             placeholder="Product Title"
             value={formData.title}
             onChange={handleInputChange}
             required
           />
         </div>
-        <div className="flex flex-col">
+        <div>
           <label className="font-medium">Description</label>
           <textarea
             name="description"
-            className="border rounded-md p-2"
+            className="border rounded-md p-2 w-full"
             placeholder="Product Description"
             value={formData.description}
             onChange={handleInputChange}
             required
           ></textarea>
         </div>
+
+        {/* Price and Discount */}
         <div className="grid grid-cols-2 gap-4">
-          <div className="flex flex-col">
+          <div>
             <label className="font-medium">Price</label>
             <input
               type="number"
               name="price"
-              className="border rounded-md p-2"
-              placeholder="Price"
+              className="border rounded-md p-2 w-full"
+              placeholder="Product Price"
               value={formData.price}
               onChange={handleInputChange}
               required
             />
           </div>
-          <div className="flex flex-col">
-            <label className="font-medium">Category</label>
-            <select
-              name="category"
-              className="border rounded-md p-2"
-              value={formData.category}
+          <div>
+            <label className="font-medium">Discount (%)</label>
+            <input
+              type="number"
+              name="discount"
+              className="border rounded-md p-2 w-full"
+              placeholder="Discount"
+              value={formData.discount}
               onChange={handleInputChange}
-              required
-            >
-              <option value="">Select Category</option>
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
+            />
           </div>
         </div>
+
+        {/* Stock */}
+        <div>
+          <label className="font-medium">Stock</label>
+          <input
+            type="number"
+            name="stock"
+            className="border rounded-md p-2 w-full"
+            placeholder="Stock Quantity"
+            value={formData.stock}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+
+        {/* Additional Information */}
         <div className="flex flex-col">
+          <label className="font-medium">Additional Details</label>
+          <textarea
+            name="additionalDetails"
+            className="border rounded-md p-2"
+            placeholder="Additional Details"
+            value={formData.information.additionalDetails}
+            onChange={handleNestedChange}
+          ></textarea>
+        </div>
+        <div className="flex flex-col">
+          <label className="font-medium">Materials</label>
+          <input
+            type="text"
+            name="materials"
+            className="border rounded-md p-2"
+            placeholder="Materials"
+            value={formData.information.materials}
+            onChange={handleNestedChange}
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="font-medium">Fit Type</label>
+          <input
+            type="text"
+            name="fitType"
+            className="border rounded-md p-2"
+            placeholder="Fit Type"
+            value={formData.information.fitType}
+            onChange={handleNestedChange}
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="font-medium">Brand</label>
+          <input
+            type="text"
+            name="brand"
+            className="border rounded-md p-2"
+            placeholder="Brand"
+            value={formData.information.brand}
+            onChange={handleNestedChange}
+          />
+        </div>
+
+
+        {/* Tags */}
+        <div>
           <label className="font-medium">Tags</label>
-          <div className="flex space-x-2">
+          <div className="flex gap-2">
             <input
               type="text"
+              value={newTag}
               className="border rounded-md p-2 flex-grow"
               placeholder="Add a tag"
-              value={newTag}
               onChange={(e) => setNewTag(e.target.value)}
             />
             <button
               type="button"
-              onClick={handleAddTag}
               className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+              onClick={handleAddTag}
             >
               Add
             </button>
           </div>
-          <div className="flex flex-wrap mt-2">
-            {formData.tags.map((tag) => (
+          <div className="flex gap-2 mt-2 flex-wrap">
+            {formData.tags.map((tag, index) => (
               <span
-                key={tag}
-                className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm mr-2 mb-2 flex items-center"
+                key={index}
+                className="bg-gray-200 text-gray-800 px-3 py-1 rounded-full flex items-center gap-2"
               >
                 {tag}
                 <button
                   type="button"
+                  className="text-red-500"
                   onClick={() => handleRemoveTag(tag)}
-                  className="ml-2 text-red-500"
                 >
-                  ×
+                  &times;
                 </button>
               </span>
             ))}
           </div>
         </div>
+
+        {/* Trending */}
+        <div className="flex items-center gap-2">
+          <label className="font-medium">Trending</label>
+          <input
+            type="checkbox"
+            checked={formData.trending}
+            onChange={handleTrendingToggle}
+          />
+        </div>
+
+        {/* Sizes */}
+        <div>
+          <label className="font-medium">Sizes</label>
+          <div className="flex gap-2 flex-wrap">
+            {availableSizes.map((size) => (
+              <button
+                type="button"
+                key={size}
+                className={`w-10 h-10 rounded-full border ${
+                  formData.sizes.includes(size)
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-200 text-gray-700"
+                }`}
+                onClick={() => handleSizeToggle(size)}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Colors */}
+        <div>
+          <label className="font-medium">Colors</label>
+          <div className="flex gap-2 flex-wrap">
+            {availableColors.map((color) => (
+              <button
+                type="button"
+                key={color}
+                className={`w-10 h-10 rounded-full border ${
+                  formData.colors.includes(color)
+                    ? "ring-2 ring-blue-500"
+                    : "ring-0"
+                }`}
+                style={{ backgroundColor: color.toLowerCase() }}
+                onClick={() => handleColorToggle(color)}
+              ></button>
+            ))}
+          </div>
+        </div>
+
+        {/* Images */}
         <div className="flex flex-col">
           <label className="font-medium">Images (Max 4)</label>
           <input
@@ -205,43 +310,8 @@ const AddProduct = () => {
             className="border rounded-md p-2"
           />
         </div>
-        <fieldset className="border rounded-md p-4">
-          <legend className="font-medium">Additional Information</legend>
-          <div className="grid grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="additionalDetails"
-              className="border rounded-md p-2"
-              placeholder="Additional Details"
-              value={formData.information.additionalDetails}
-              onChange={handleNestedChange}
-            />
-            <input
-              type="text"
-              name="materials"
-              className="border rounded-md p-2"
-              placeholder="Materials"
-              value={formData.information.materials}
-              onChange={handleNestedChange}
-            />
-            <input
-              type="text"
-              name="fitType"
-              className="border rounded-md p-2"
-              placeholder="Fit Type"
-              value={formData.information.fitType}
-              onChange={handleNestedChange}
-            />
-            <input
-              type="text"
-              name="brand"
-              className="border rounded-md p-2"
-              placeholder="Brand"
-              value={formData.information.brand}
-              onChange={handleNestedChange}
-            />
-          </div>
-        </fieldset>
+
+        {/* Submit Button */}
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
