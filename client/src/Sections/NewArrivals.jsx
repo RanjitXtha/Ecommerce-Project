@@ -11,6 +11,12 @@ const NewArrivals = () => {
     useEffect(()=>{
         setProducts(productData.slice(0,6));
     },[])
+
+    if(products.length===0){
+        return(
+            <div></div>
+        )
+    }
     
   return (
     <section className='margin'>

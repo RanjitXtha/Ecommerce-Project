@@ -12,7 +12,7 @@ const ItemCards = ({product}) => {
             <span className='flex justify-between items-end'>
                 <span className='flex gap-4 text-base'>
                   {
-                    product.discount !== 0 ? <p>{
+                    (product.discount !== 0 && product.discount !==null) ? <p>{
                      (product.price - (product.price * product.discount)/100).toFixed(2)
                       }</p>:''
                   }
@@ -29,7 +29,7 @@ const ItemCards = ({product}) => {
             </span>
         </div>
         {
-          product.discount !==0? <div className='absolute top-[1rem] left-[1rem] px-2 py-1 bg-white rounded-3xl shadow-lg'>{product.discount}% off</div>:null
+          product.discount !==0 && product.discount!==null? <div className='absolute top-[1rem] left-[1rem] px-2 py-1 bg-white rounded-3xl shadow-lg'>{product.discount}% off</div>:null
         }
        
     </Link>

@@ -74,6 +74,13 @@ const Shop = () => {
         }
        
     }
+
+
+    if(productData.length===0){
+        return(
+            <div></div>
+        )
+    }
     
     return (
         <section className='margin '>

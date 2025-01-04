@@ -11,6 +11,13 @@ const Trending = () => {
             setProducts(productData.filter(item=>item.trending ).slice(0,6));
         },[])
 
+
+    if(products.length===0){
+        return(
+            <div></div>
+        )
+    }
+
   return (
     <section className='margin'>
         <span className='flex justify-center'><h1 className='title '>Trending</h1></span>
