@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -59,15 +61,6 @@ const AddProduct = () => {
       ...prev,
       information: { ...prev.information, [name]: value },
     }));
-  };
-
-  const handleFileChange = (e) => {
-    const files = Array.from(e.target.files);
-    if (files.length > 4) {
-      alert("You can upload up to 4 images only.");
-    } else {
-      setImages(files);
-    }
   };
 
   const handleAddTag = () => {
@@ -150,6 +143,7 @@ const AddProduct = () => {
       const result = await response.json();
       if (result.success) {
         alert("Product added successfully!");
+        navigate('/admin/home');
       } else {
         alert(`Error: ${result.message}`);
       }
@@ -371,9 +365,9 @@ const AddProduct = () => {
           <label className="font-medium">Colors</label>
           <div className="flex gap-2 flex-wrap">
             {availableColors.map((color) => (
+              <div key={color} className="flex flex-col items-center">
               <button
                 type="button"
-                key={color}
                 className={`w-10 h-10 rounded-full border ${
                   formData.colors.includes(color)
                     ? "ring-2 ring-blue-500"
@@ -382,6 +376,8 @@ const AddProduct = () => {
                 style={{ backgroundColor: color.toLowerCase() }}
                 onClick={() => handleColorToggle(color)}
               ></button>
+              <p className="text-xs text-lightColor">{color}</p>
+              </div>
             ))}
           </div>
         </div>
