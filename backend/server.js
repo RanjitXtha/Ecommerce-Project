@@ -42,7 +42,7 @@ app.get('/admin/protected',adminAuth,(req,res)=>{
 })
 
 app.use('/api/',userRouter);
-app.use('/api/admin/',adminAuth,productRouter);
+app.use('/api/admin/',productRouter);
 
 
 

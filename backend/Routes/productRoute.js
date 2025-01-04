@@ -4,9 +4,9 @@ const upload = require('../Middleware/multer');
 const adminAuth = require('../Middleware/adminAuth');
 const productRouter = express.Router();
 
-productRouter.post('/add-product',upload.array('images', 4),adminAuth,addProduct);
+productRouter.post('/add-product',adminAuth,upload.array('images', 4),addProduct);
 productRouter.post('/remove-product',adminAuth,removeProduct);
-productRouter.post('/get-all-product',getProductList);
-productRouter.post('/get-product',getProduct);
+productRouter.get('/get-all-product',getProductList);
+productRouter.get('/get-product',getProduct);
 
 module.exports = productRouter;

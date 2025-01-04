@@ -18,8 +18,11 @@ import HomeRoute from './ProtectedRoute/HomeRoute';
 import AdminLogin from './Pages/AdminLogin';
 import AddProduct from './Pages/AddProduct';
 import AdminRoute from './ProtectedRoute/AdminRoute';
+import { AdminAuthContext } from './Context/AdminAuthContext';
+import { useContext } from 'react';
 
 function App() {
+  const {user} = useContext(AdminAuthContext);
   return (
     <div className='flex flex-col min-h-[100vh]'>
 
@@ -42,7 +45,7 @@ function App() {
             <Route  path="/cart" element={<Cart />} />
 
             <Route  path="/admin/home" element={<AdminRoute><AdminHome /></AdminRoute> } />
-            <Route  path="/admin/login" element={<AdminLogin />} />
+            <Route  path="/admin/login" element={user?<AdminHome/>:<AdminLogin />} />
             <Route  path="/admin/add-product" element={<AdminRoute><AddProduct /></AdminRoute>} />
           </Routes>
         </div>

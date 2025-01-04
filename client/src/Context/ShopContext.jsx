@@ -1,9 +1,28 @@
 import { createContext, useEffect, useState } from "react";
-import products from "../data";
+//import products from "../data";
 
 export const ShopContext = createContext();
 
 export const ShopContextProvider = ({ children }) => {
+    const[products , setProducts] = useState([]);
+
+    useEffect(()=>{
+
+      const getAllProducts = async()=>{
+
+        try{
+        const response = await fetch('http://localhost:5000/api/admin/get-all-product');
+        const product = await response.json();
+        setProducts(product.productList);
+        }catch(error){
+          console.log(error);
+        }
+      }
+
+      getAllProducts();
+    },[])
+
+ 
   const currency = "Rs.";
   const delivery_fee = 100;
 

@@ -113,27 +113,38 @@ const AddProduct = () => {
     e.preventDefault();
     console.log("Form Data:", formData);
     console.log("Images:", images);
+    const token = localStorage.getItem("adminToken")
 
     const data = new FormData();
     data.append("title", formData.title);
     data.append("description", formData.description);
     data.append("price", formData.price);
     data.append("category", formData.category);
-    data.append("tags", JSON.stringify(formData.tags));
-    data.append("sizes", JSON.stringify(formData.sizes));
-    data.append("colors", JSON.stringify(formData.colors));
+    data.append("tags", formData.tags); // Convert array to JSON string
+    data.append("sizes", formData.sizes); // Convert array to JSON string
+    data.append("colors",formData.colors);
     data.append("trending", formData.trending);
     data.append("discount", formData.discount);
     data.append("stock", formData.stock);
-    data.append("information", JSON.stringify(formData.information));
+    data.append("information", formData.information);
+
+   
+    
 
     images.forEach((image) => {
       data.append("images", image);
     });
 
+    Object.entries(data).forEach(([key, value]) => {
+      console.log(`Key: ${key}, Value: ${value}`);
+    });
+    
     try {
       const response = await fetch("http://localhost:5000/api/admin/add-product", {
         method: "POST",
+        headers:{
+          Authorization: token,
+        },
         body: data,
       });
       const result = await response.json();

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 const ItemCards = ({product}) => {
   return (
-    <Link className='item-card rounded-3xl overflow-hidden relative group transition-all flex-1 min-w-[16rem] max-w-[20rem] h-full' to={`/product/${product.id}`}>
-          <img src={product.image[0]} className='transition-all  group-hover:scale-110  h-[22rem] bg-customGrey rounded-3xl' alt={product.id} />
+    <Link className='item-card rounded-3xl overflow-hidden relative group transition-all flex-1 min-w-[16rem] max-w-[20rem] h-full' to={`/product/${product._id}`}>
+          <img src={`http://localhost:5000/uploads/${product.image[0]}`} className='transition-all  group-hover:scale-110  h-[22rem] bg-customGrey rounded-3xl' alt={product.id} />
        
         <div className='py-3 text-sm font-semibold flex flex-col justify-between min-h-[5rem]'>
             <p>{product.title}</p>

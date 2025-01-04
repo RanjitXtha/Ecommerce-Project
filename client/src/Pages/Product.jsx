@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import products from '../data';
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
@@ -9,7 +8,7 @@ import { PiShoppingBagFill } from "react-icons/pi";
 import { ShopContext } from '../Context/ShopContext';
 
 const Product = () => {
-    const {currency , delivery_fee , addToCart}  = useContext(ShopContext);
+    const {currency , delivery_fee , addToCart , products}  = useContext(ShopContext);
     const {productId} = useParams();
     const [product , setProduct] = useState(null);
     const [currentIndex ,setCurrentIndex] = useState(0);
@@ -18,7 +17,8 @@ const Product = () => {
     const [quantity , setQuantity] = useState(1);
 
     useEffect(()=>{
-        const product = products.find(item =>item.id === productId);
+        console.log(products);
+        const product = products.find(item =>item._id === productId);
         setProduct(product);
     },[productId])
     
@@ -59,14 +59,14 @@ const Product = () => {
         <div className='mt-[3rem] flex flex-col md:grid md:grid-cols-[1.5fr_2fr] gap-10 max-container'>
         <div className='flex flex-col gap-4'>
             <div className='w-full h-[40rem] md:h-auto'>
-                <img className='rounded-3xl' src={product.image[currentIndex]} alt="" />
+                <img className='rounded-3xl' src={`http://localhost:5000/uploads/${product.image[currentIndex]}`} alt="" />
             </div>
            
             <div className='grid grid-cols-3 w-full justify-between gap-2'>
                 {
                     product.image.map((pic,index)=>(
                         <div onClick={()=>setCurrentIndex(index)} key={index} className='max-w-[12rem] max-h-[12rem] '>
-                            <img  className={`w-full rounded-xl border-[2px] ${index === currentIndex?'border-black':''}`} src={pic} alt="product-imag/e" />
+                            <img  className={`w-full rounded-xl border-[2px] ${index === currentIndex?'border-black':''}`} src={`http://localhost:5000/uploads/${pic}`} alt="product-imag/e" />
                         </div>
                     ))
                 }
