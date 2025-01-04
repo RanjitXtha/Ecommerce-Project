@@ -13,6 +13,7 @@ export const ShopContextProvider = ({ children }) => {
         try{
         const response = await fetch('http://localhost:5000/api/admin/get-all-product');
         const product = await response.json();
+        console.log("fetching product data")
         setProducts(product.productList);
         }catch(error){
           console.log(error);

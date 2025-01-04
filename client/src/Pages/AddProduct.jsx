@@ -120,13 +120,13 @@ const AddProduct = () => {
     data.append("description", formData.description);
     data.append("price", formData.price);
     data.append("category", formData.category);
-    data.append("tags", formData.tags); // Convert array to JSON string
-    data.append("sizes", formData.sizes); // Convert array to JSON string
-    data.append("colors",formData.colors);
+    data.append("tags", JSON.stringify(formData.tags)); 
+    data.append("sizes", JSON.stringify(formData.sizes));
+    data.append("colors", JSON.stringify(formData.colors));
     data.append("trending", formData.trending);
     data.append("discount", formData.discount);
     data.append("stock", formData.stock);
-    data.append("information", formData.information);
+    data.append("information", JSON.stringify(formData.information));
 
    
     

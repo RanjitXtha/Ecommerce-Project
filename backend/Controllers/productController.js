@@ -7,13 +7,19 @@ const addProduct = async (req,res)=>{
         stock , information
     } = req.body;
     
+
+    const parsedTags = JSON.parse(tags);
+    const parsedSizes = JSON.parse(sizes);
+    const parsedColors = JSON.parse(colors);
+    const parsedInformation = JSON.parse(information);
+    
     console.log(req.body);
     //console.log(req.files);
     const imagePaths = req.files.map((file) => file.filename);
 try{
     const newProduct = new productSchema({
-        title, description ,price,category,tags,sizes,
-        colors,image:imagePaths , stock, trending , discount,information
+        title, description ,price,category,tags:parsedTags,sizes:parsedSizes,
+        colors:parsedColors,image:imagePaths , stock, trending , discount,information:parsedInformation
     })
 
     await newProduct.save();
