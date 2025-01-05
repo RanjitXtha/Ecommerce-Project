@@ -9,7 +9,7 @@ const Trending = () => {
         const [products , setProducts] = useState([])
         useEffect(()=>{
             setProducts(productData.filter(item=>item.trending ).slice(0,6));
-        },[])
+        },[productData])
 
 
     if(products.length===0){

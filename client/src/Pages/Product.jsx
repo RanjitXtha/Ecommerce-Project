@@ -77,7 +77,7 @@ const Product = () => {
         <div className='flex flex-col gap-2 '>
             <p className='text-3xl font-semibold'>{product.title}</p>
             <p>{product.description}</p>
-            <p className='text-xl font-semibold'>{currency} {product.price}</p>
+            <p className='text-xl font-semibold'>{currency} {(product.price - product.price*product.discount/100).toFixed(2)}</p>
             <p className='text-xl  my-[1rem]'>Colors:</p>
             <div className='flex gap-3'>
 

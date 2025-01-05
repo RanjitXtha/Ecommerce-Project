@@ -28,7 +28,16 @@ export const ShopContextProvider = ({ children }) => {
   const delivery_fee = 100;
 
   const [totalQuantity, setTotalQuantity] = useState(0);
-  const [cartItems, setCartItems] = useState([]);
+
+  const [cartItems, setCartItems] = useState(() => {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+  
+  useEffect(()=>{
+    console.log("setting item in cart")
+    localStorage.setItem('cart',JSON.stringify(cartItems));
+  },[cartItems])
 
   const addToCart = (productData) => {
     const existingItemIndex = cartItems.findIndex(

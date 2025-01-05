@@ -10,7 +10,7 @@ const NewArrivals = () => {
 
     useEffect(()=>{
         setProducts(productData.slice(0,6));
-    },[])
+    },[productData])
 
     if(products.length===0){
         return(
