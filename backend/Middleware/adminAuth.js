@@ -6,11 +6,6 @@ const ADMIN_PASSWORD = 'adminadmin'
 const adminAuth = async(req,res,next)=>{
     try{ 
         const token = req.headers.authorization;
-
-        //console.log(req.headers);
-        // Object.entries(req).forEach(([key, value]) => {
-        //     console.log(`Key: ${key}, Value: ${value}`);
-        // });
         
         if(!token){
             return res.json({success:false,message:'Admin authorization denied'})
