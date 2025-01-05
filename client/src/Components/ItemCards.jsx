@@ -14,13 +14,13 @@ const ItemCards = ({product}) => {
             <span className='flex justify-between items-end'>
                 <span className='flex gap-4 text-base'>
                   {
-                    (product.discount !== 0 && product.discount !==null) ? <p> {
+                    (product.discount !== 0 && product.discount !==null) ? <p>{currency} {
                      (product.price - (product.price * product.discount)/100).toFixed(2)
                       }</p>:''
                   }
                  
                   <p className={`relative ${product.discount === 0 ?'':'text-lightColor' }`}>
-                  
+                  {currency} 
                     {
                         product.discount !== 0  ? <div className='absolute w-full bg-black h-[2px] top-[40%] left-0 right-0'></div> :null
                     }
