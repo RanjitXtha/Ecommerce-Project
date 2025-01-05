@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     },
     profilePic: {type:String},
     cart:{
-        type:Object , default:{}
+        type:Array , default:[]
     }
 },{timestamps:true,minimize:false}) //empty obj then we need  to use minimize else moongose will ignore empty obj.
 

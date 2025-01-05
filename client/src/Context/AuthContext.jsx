@@ -22,15 +22,13 @@ export const AuthProvider = ({ children }) => {
         });
 
         const data = await response.json();
-        console.log(data);
-
+    
         if (!data.success) {
           console.log(data.message);
           localStorage.removeItem("token");
           setUser(null);
           return;
         }
-        console.log(data.user)
         setUser(data.user);
       } catch (error) {
         console.error("Authentication Error:", error);
