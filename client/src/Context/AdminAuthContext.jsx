@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect } from "react";
 export const AdminAuthContext = createContext();
 
 export const AdminAuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [admin, setAdmin] = useState(null);
  
   useEffect(() => {
     const authenticate = async () => {
@@ -27,7 +27,7 @@ export const AdminAuthProvider = ({ children }) => {
         if (!data.success) {
           //console.log(data.message);
           localStorage.removeItem("adminToken");
-          setUser(null);
+          setAdmin(null);
           return;
         }
         //console.log(data.user)
@@ -35,7 +35,7 @@ export const AdminAuthProvider = ({ children }) => {
       } catch (error) {
         console.error("Authentication Error:", error);
         localStorage.removeItem("adminToken");
-        setUser(null);
+        setAdmin(null);
       }
     };
 
@@ -45,8 +45,8 @@ export const AdminAuthProvider = ({ children }) => {
   const logout = () => {
     console.log("logging out")
     localStorage.removeItem('adminToken'); 
-    setUser(null); 
+    setAdmin(null); 
   };
 
-  return <AdminAuthContext.Provider value={{ user, setUser ,logout }}>{children}</AdminAuthContext.Provider>;
+  return <AdminAuthContext.Provider value={{ admin, setAdmin ,logout }}>{children}</AdminAuthContext.Provider>;
 };
