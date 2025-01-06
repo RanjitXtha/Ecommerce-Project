@@ -1,12 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../Context/ShopContext';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
 
 const PlaceOrder = () => {
   //const navigate = useNavigate();
-  const {delivery_fee, currency  } = useContext(ShopContext);
+  const {delivery_fee, currency , cartItems } = useContext(ShopContext);
   const {user} = useContext(AuthContext);
+  const [total,setTotal] = useState(0);
+
+  useEffect(()=>{
+    const totalPrice = cartItems.reduce((sum,item)=>sum+item.quantity*item.price,0);
+    setTotal(parseFloat(totalPrice.toFixed(2)));
+  },[cartItems])
 
   const [orderDetail, setOrderDetail] = useState({
     firstName: '',
@@ -27,16 +33,28 @@ const PlaceOrder = () => {
     }));
   };
 
-  const handleSubmit = async()=>{
-    const response = await fetch('http://localhost:5000/api/place-order',{
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    const orderData = {
+      userId: user.userId,
+      items: JSON.stringify(cartItems),
+      amount: (total+delivery_fee).toFixed(2),
+      address: orderDetail,
+      status: 'Order Placed',
+      paymentMethod: 'eSewa',
+      payment:true,
+    }
+    const response = await fetch('http://localhost:5000/api/order/addOrder',{
       method:'POST',
       headers:{
-        Authorization:user
+        Authorization:user,
+        'Content-Type':'application/json'
       },
-      body: JSON.stringify(orderDetail)
+      body: JSON.stringify(orderData)
     })
 
     const data = await response.json();
+    console.log(orderData)
     
   }
 
@@ -120,7 +138,7 @@ const PlaceOrder = () => {
           <h1 className='text-xl font-semibold mt-[3rem] my-[1rem]'>Cart Total:</h1>
           <span className='flex justify-between'>
             <p>Subtotal: </p>
-            <p>{currency} 1000</p>
+            <p>{currency} {total}</p>
           </span>
           <span className='flex justify-between'>
             <p>Delivery: </p>
@@ -128,7 +146,7 @@ const PlaceOrder = () => {
           </span>
           <span className='flex justify-between font-semibold my-2 p-1 border-black border-t-[1px]'>
             <p>Total: </p>
-            <p>{1000 + delivery_fee}</p>
+            <p>{(total + delivery_fee).toFixed(2)}</p>
           </span>
           <div>
             <p className='mt-4 mb-2 text-lg font-semibold'>Payment Method:</p>

@@ -5,13 +5,19 @@ const cors = require('cors');
 const path = require('path');
 const userRouter = require('./Routes/userRoute');
 const productRouter = require('./Routes/productRoute');
+const orderRouter = require('./Routes/orderRoute');
 const authUser  = require('./Middleware/auth');
 const adminAuth = require('./Middleware/adminAuth');
 
 
 const dbURL = 'mongodb+srv://alienshooter:alienshooterpassword_123@cluster0.rbry7.mongodb.net/ecommerceSite?retryWrites=true&w=majority&appName=Cluster0';
 const app = express();
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -43,6 +49,7 @@ app.get('/admin/protected',adminAuth,(req,res)=>{
 
 app.use('/api/',userRouter);
 app.use('/api/admin/',productRouter);
+app.use('/api/order/',orderRouter);
 
 
 
