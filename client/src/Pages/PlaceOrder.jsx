@@ -81,6 +81,7 @@ const PlaceOrder = () => {
               name='firstName'
               value={orderDetail.firstName}
               onChange={handleChange}
+              required
             />
             <input
               placeholder='Last Name'
@@ -89,6 +90,7 @@ const PlaceOrder = () => {
               name='lastName'
               value={orderDetail.lastName}
               onChange={handleChange}
+              required
             />
           </span>
 
@@ -99,6 +101,7 @@ const PlaceOrder = () => {
             name='email'
             value={orderDetail.email}
             onChange={handleChange}
+            required
           />
           <input
             type='text'
@@ -107,6 +110,7 @@ const PlaceOrder = () => {
             name='street'
             value={orderDetail.street}
             onChange={handleChange}
+            required
           />
           <span className='flex justify-between gap-4'>
             <input
@@ -116,6 +120,7 @@ const PlaceOrder = () => {
               name='city'
               value={orderDetail.city}
               onChange={handleChange}
+              required
             />
             <input
               type='text'
@@ -124,6 +129,7 @@ const PlaceOrder = () => {
               name='state'
               value={orderDetail.state}
               onChange={handleChange}
+              required
             />
           </span>
           <input
@@ -133,6 +139,7 @@ const PlaceOrder = () => {
             name='landMark'
             value={orderDetail.landMark}
             onChange={handleChange}
+            required
           />
           <input
             type='text'
@@ -141,6 +148,7 @@ const PlaceOrder = () => {
             name='phoneNumber'
             value={orderDetail.phoneNumber}
             onChange={handleChange}
+            required
           />
         </div>
 
