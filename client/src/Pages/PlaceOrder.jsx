@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
 
 const PlaceOrder = () => {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   const {delivery_fee, currency , cartItems } = useContext(ShopContext);
   const {user} = useContext(AuthContext);
   const [total,setTotal] = useState(0);
@@ -33,30 +33,40 @@ const PlaceOrder = () => {
     }));
   };
 
-  const handleSubmit = async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
+  
     const orderData = {
       userId: user.userId,
       items: JSON.stringify(cartItems),
-      amount: (total+delivery_fee).toFixed(2),
+      amount: (total + delivery_fee).toFixed(2),
       address: orderDetail,
       status: 'Order Placed',
       paymentMethod: 'eSewa',
-      payment:true,
-    }
-    const response = await fetch('http://localhost:5000/api/order/addOrder',{
-      method:'POST',
-      headers:{
-        Authorization:user,
-        'Content-Type':'application/json'
-      },
-      body: JSON.stringify(orderData)
-    })
+      payment: false,
+    };
+  
+    try {
+      const response = await fetch('http://localhost:5000/api/order/addOrder', {
+        method: 'POST',
+        headers: {
+          Authorization: user,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      });
+  
+     
+        const data = await response.json();
 
-    const data = await response.json();
-    console.log(orderData)
-    
-  }
+        if(data.success){
+          window.location.href = data.url;
+        }
+     
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   return (
     <div className='margin max-container padding'>
