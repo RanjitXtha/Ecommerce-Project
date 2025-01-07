@@ -36,7 +36,7 @@ try{
  
 const getProductList = async (req,res)=>{
    try{
-    const productList = await productSchema.find({});
+    const productList = await productSchema.find();
     if(!productList){
         res.json({success:false , message:'Products Not found'});
 

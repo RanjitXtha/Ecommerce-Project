@@ -6,6 +6,8 @@ import { FaRegHeart } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
 import { PiShoppingBagFill } from "react-icons/pi";
 import { ShopContext } from '../Context/ShopContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Product = () => {
     const {currency , delivery_fee , addToCart , products}  = useContext(ShopContext);
@@ -33,12 +35,12 @@ const Product = () => {
     }
 
     const handleCart=()=>{
-        if(size === ''){
-            alert('Select sizes');
+        if(color === ''){
+            toast.warning('Select Size');
             return;
         }else if
-        (color === ''){
-            alert('select color');
+        (size === ''){
+            toast.warning('Select Color');
             return;
         }
         const productData = {

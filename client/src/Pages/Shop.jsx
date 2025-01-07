@@ -20,21 +20,22 @@ const Shop = () => {
 
     const handleCategories = (e) => {
         const category = e.target.value;
+        console.log(category);
         setCategories((prev) =>
             prev.includes(category)? prev.filter((item) => item !== category): [...prev, category] 
         );
     };
 
-    const filter = () =>{
+    const filter = () => {
         if (categories.length > 0) {
             const filtered = productData.filter((product) =>
-                product.tags.some((tag) => categories.includes(tag)) 
+                product.tags.some((tag) => categories.includes(tag)) || categories.includes(product.category.toLowerCase())
             );
             setFilteredProducts(filtered);
         } else {
-            setFilteredProducts(productData); 
+            setFilteredProducts(productData);
         }
-    }
+    };
 
     useEffect(() => {
        filter();
