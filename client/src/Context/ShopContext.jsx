@@ -106,6 +106,7 @@ export const ShopContextProvider = ({ children }) => {
     currency,
     delivery_fee,
     cartItems,
+    setCartItems,
     totalQuantity,
     addToCart,
     increaseQuantity,

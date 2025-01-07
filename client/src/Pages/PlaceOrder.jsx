@@ -2,8 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../Context/ShopContext';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PlaceOrder = () => {
+  
   const navigate = useNavigate();
   const {delivery_fee, currency , cartItems } = useContext(ShopContext);
   const {user} = useContext(AuthContext);
@@ -60,10 +63,14 @@ const PlaceOrder = () => {
         const data = await response.json();
 
         if(data.success){
+        
           window.location.href = data.url;
+        }else{
+          toast.error("Payment Failed.");
         }
      
     } catch (error) {
+      toast.error("Payment failed. Please try again.");
       console.error('Error:', error);
     }
   };

@@ -3,9 +3,9 @@ const { v4: uuidv4 } = require('uuid');
 const crypto = require('crypto');
 
 const esewaConfig = {
-  merchantId: "EPAYTEST", // Replace with your eSewa Merchant ID
-  successUrl: "http://localhost:5173/payment-success", //Replace with front-end success route page
-  failureUrl: "http://localhost:5173/payment-failure", //Replace with front-end failure route page
+  merchantId: "EPAYTEST", 
+  successUrl: "http://localhost:5173/cart?status=success&",
+  failureUrl: "http://localhost:5173/cart?status=failure&",
   esewaPaymentUrl: "https://rc-epay.esewa.com.np/api/epay/main/v2/form",
   secret: "8gBm/:&EnhH.1/q",
 };
@@ -29,7 +29,7 @@ const addOrder = async (req, res) => {
     });
 
     if (paymentMethod === 'eSewa') {
-      const transactionUuid = uuidv4(); // Generate a random UUID
+      const transactionUuid = uuidv4();
       console.log(transactionUuid);
       const parsedAmount = parseFloat(amount);
       const totalAmount = parsedAmount + 100;
@@ -39,7 +39,6 @@ const addOrder = async (req, res) => {
       const signature = crypto.createHmac('sha256', secretKey).update(dataToHash).digest('base64');
 
 
-      // Prepare payment data
     let paymentData = {
       amount: parsedAmount,
       failure_url: esewaConfig.failureUrl,
@@ -63,13 +62,14 @@ const addOrder = async (req, res) => {
         if (paymentResponse.ok) {
           console.log( paymentResponse.url);
           await order.save();
+          
           return res.json({
             success: true,
             orderId: order._id,
             transactionUuid,
             secretKey,
             signature,
-            url: paymentResponse.url, // This is the payment URL
+            url: paymentResponse.url, 
           });
         } else {
           console.log("error")

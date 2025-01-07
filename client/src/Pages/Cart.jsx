@@ -5,17 +5,38 @@ import { IoIosArrowUp } from "react-icons/io";
 import { FaTrashCan } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
+import { useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Cart = () => { 
   const {user} = useContext(AuthContext);
+  
   const navigate = useNavigate();
-  const {cartItems,currency , increaseQuantity , decreaseQuantity , removeFromCart , delivery_fee} = useContext(ShopContext);
+  const {cartItems,currency ,setCartItems , increaseQuantity , decreaseQuantity , removeFromCart , delivery_fee} = useContext(ShopContext);
   const [total , setTotal] = useState(0);
+
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const status = params.get('status');
+  console.log('status' + status);
 
   useEffect(()=>{
     const totalPrice = cartItems.reduce((sum,item)=>sum+item.quantity*item.price,0);
     setTotal(parseFloat(totalPrice.toFixed(2)));
-  },[cartItems])
+  },[cartItems]);
+ 
+
+  useEffect(() => {
+    if (status === 'success') {
+      toast.success("Payment successful!");
+      setCartItems([]);
+
+    } else if (status === 'failure') {
+      toast.error("Payment failed. Please try again.");
+    }
+  }, [status]);
 
   const placeOrder = ()=>{
     if(user){
