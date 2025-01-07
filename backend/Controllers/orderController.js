@@ -59,13 +59,10 @@ const addOrder = async (req, res) => {
         const paymentResponse = await fetch(`${esewaConfig.esewaPaymentUrl}?${new URLSearchParams(paymentData)}`, {
           method: 'POST',
         });
-       
-       
-       
 
         if (paymentResponse.ok) {
           console.log( paymentResponse.url);
-
+          await order.save();
           return res.json({
             success: true,
             orderId: order._id,
@@ -84,8 +81,7 @@ const addOrder = async (req, res) => {
         
       }
     } else {
-      // Handle non-eSewa payments or save order directly
-      //await order.save();
+      await order.save();
       return res.json({ success: true, message: 'Order added successfully', orderId: order._id });
     }
   } catch (error) {
@@ -95,11 +91,25 @@ const addOrder = async (req, res) => {
 };
 
 
-const getAllOrder = () =>{
+const getAllOrder = async(req,res) =>{
+  try{
+  const orders = await orderSchema.find({});
+  console.log(orders);
+  if(orders){
+  res.json({success:true,orders})
+  }
+  }catch(err){
+    console.log(err);
+    res.json({success:false,message:err});
+  }
 
 }
 
-const getUserOrder = ()=>{
+const getUserOrder = async(req,res)=>{
+ const {userId} = req.params;
+ console.log(userId);
+ const userOrders = await orderSchema.find({userId});
+ console.log(userOrders);
 
 }
 
