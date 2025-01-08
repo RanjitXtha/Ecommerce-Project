@@ -9,7 +9,7 @@ export const AdminAuthProvider = ({ children }) => {
     const authenticate = async () => {
       try {
         const token = localStorage.getItem("adminToken");
-        // console.log("admin" + token)
+        console.log("admin" + token)
         if (!token) {
           console.log("No token available");
           return;
@@ -30,8 +30,8 @@ export const AdminAuthProvider = ({ children }) => {
           setAdmin(null);
           return;
         }
-        //console.log(data.user)
-        setUser(data.user);
+        console.log(data.user)
+        setAdmin(data.user);
       } catch (error) {
         console.error("Authentication Error:", error);
         localStorage.removeItem("adminToken");

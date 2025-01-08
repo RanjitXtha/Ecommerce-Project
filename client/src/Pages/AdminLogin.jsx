@@ -29,6 +29,7 @@ const AdminLogin = () => {
             localStorage.setItem('adminToken',data.token);
             console.log("admin logged in successfully");
             navigate('/admin/home');
+            navigate(0)
         }
 
         }catch(error){
