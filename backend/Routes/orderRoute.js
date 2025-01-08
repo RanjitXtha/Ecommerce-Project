@@ -5,7 +5,7 @@ const orderRouter = express.Router();
 const authUser = require('../Middleware/auth');
 
 orderRouter.post('/addOrder',addOrder);
-orderRouter.delete('/getAllOrders',getAllOrder);
-orderRouter.delete('/:user/getOrder',getUserOrder);
+orderRouter.get('/getAllOrders',getAllOrder);
+orderRouter.get('/:user/getOrder',getUserOrder);
 
 module.exports = orderRouter;

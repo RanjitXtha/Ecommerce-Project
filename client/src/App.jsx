@@ -18,6 +18,7 @@ import HomeRoute from './ProtectedRoute/HomeRoute';
 import AdminLogin from './Pages/AdminLogin';
 import AddProduct from './Pages/AddProduct';
 import AdminRoute from './ProtectedRoute/AdminRoute';
+import AdminOrders from './Pages/AdminOrders';
 import { AdminAuthContext } from './Context/AdminAuthContext';
 import { useContext } from 'react';
 import { AuthContext } from './Context/AuthContext';
@@ -47,6 +48,7 @@ function App() {
             <Route  path="/cart" element={<Cart />} />
 
             <Route  path="/admin/home" element={<AdminRoute><AdminHome /></AdminRoute> } />
+            <Route  path="/admin/orders" element={<AdminRoute><AdminOrders /></AdminRoute> } />
             <Route  path="/admin/login" element={admin?<AdminHome/>:<AdminLogin />} />
             <Route  path="/admin/add-product" element={<AdminRoute><AddProduct /></AdminRoute>} />
           </Routes>

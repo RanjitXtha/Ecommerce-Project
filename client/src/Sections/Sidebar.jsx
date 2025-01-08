@@ -1,14 +1,15 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Sidebar = () => {
   return (
     <div>
         <section className='w-full '>
-        <h1 className='my-[1.5rem]'>Admin Dashboard</h1>
+        <h1 className='mb-[1.5rem] font-semibold text-xl'>Dashboard</h1>
         <div className='flex flex-col gap-2'>
-            <p>Products</p>
-            <p>Orders</p>
-            <p>Sales</p>
+          <Link to='/admin/home'>Products</Link>
+          <Link to='/admin/orders'>Orders</Link>
+          <Link to='/admin/sales'>Sales</Link>
         </div>
       </section>
     </div>
