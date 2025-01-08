@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Product = () => {
+    const navigate = useNavigate();
     const {currency , delivery_fee , addToCart , products}  = useContext(ShopContext);
     const {productId} = useParams();
     const [product , setProduct] = useState(null);
@@ -33,14 +34,14 @@ const Product = () => {
             setQuantity(quantity+1);
         }
     }
-
+    
     const handleCart=()=>{
         if(color === ''){
-            toast.warning('Select Size');
+            toast.warning('Select Color');
             return;
         }else if
         (size === ''){
-            toast.warning('Select Color');
+            toast.warning('Select Size');
             return;
         }
         const productData = {
@@ -48,6 +49,23 @@ const Product = () => {
         }
         addToCart(productData);
 
+    }
+
+    const handleBuyNow = ()=>{
+        if(color === ''){
+            toast.warning('Select Color');
+            return;
+        }else if
+        (size === ''){
+            toast.warning('Select Size');
+            return;
+        }
+        const productData = {
+            size , color , id:product.id , price:(product.price - product.discount*product.price/100).toFixed(2), title:product.title , image: product.image[0] , quantity , stock:product.stock
+        }
+
+        addToCart(productData);
+        navigate('/place-order')
     }
 
     if(!product)
@@ -118,7 +136,7 @@ const Product = () => {
                 <button onClick={handleCart} className='buttons bg-customOrange text-black'>Add to Cart</button>
             </div>
            
-            <button className='buttons py-3 text-lg'>Buy Now</button>
+            <button className='buttons py-3 text-lg' onClick={handleBuyNow}>Buy Now</button>
             <button className='flex items-center gap-2 py-4 border-b-[1px] border-slate-400'><FaRegHeart/ > Wishlist</button>
             <div>
                

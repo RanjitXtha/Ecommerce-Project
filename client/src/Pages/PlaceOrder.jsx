@@ -8,9 +8,10 @@ import 'react-toastify/dist/ReactToastify.css';
 const PlaceOrder = () => {
   
   const navigate = useNavigate();
-  const {delivery_fee, currency , cartItems } = useContext(ShopContext);
+  const {delivery_fee, currency , cartItems ,setCartItems } = useContext(ShopContext);
   const {user} = useContext(AuthContext);
   const [total,setTotal] = useState(0);
+  const [payment , setPayment] = useState('');
 
   useEffect(()=>{
     const totalPrice = cartItems.reduce((sum,item)=>sum+item.quantity*item.price,0);
@@ -21,9 +22,9 @@ const PlaceOrder = () => {
     firstName: '',
     lastName: '',
     email: '',
-    street: '',
+    province: '',
+    district: '',
     city: '',
-    state: '',
     landMark: '',
     phoneNumber: '',
   });
@@ -38,6 +39,11 @@ const PlaceOrder = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if(payment===''){
+      toast.warning('Select a payment method.');
+      return;
+    }
   
     const orderData = {
       userId: user.userId,
@@ -45,8 +51,8 @@ const PlaceOrder = () => {
       amount: (total + delivery_fee).toFixed(2),
       address: orderDetail,
       status: 'Order Placed',
-      paymentMethod: 'eSewa',
-      payment: false,
+      paymentMethod: payment,
+      payment: payment==='eSewa'?true:false,
     };
   
     try {
@@ -63,8 +69,14 @@ const PlaceOrder = () => {
         const data = await response.json();
 
         if(data.success){
-        
-          window.location.href = data.url;
+          if(data.url){
+            window.location.href = data.url;
+          }else{
+            toast.success('Order Placed');
+            setCartItems([]);
+            navigate('/cart');
+          }
+         
         }else{
           toast.error("Payment Failed.");
         }
@@ -112,14 +124,23 @@ const PlaceOrder = () => {
           />
           <input
             type='text'
-            placeholder='Street'
+            placeholder='Province'
             className='input-field'
-            name='street'
-            value={orderDetail.street}
+            name='province'
+            value={orderDetail.province}
             onChange={handleChange}
             required
           />
           <span className='flex justify-between gap-4'>
+            <input
+              type='text'
+              placeholder='District'
+              className='input-field w-[50%] md:w-[20vw]'
+              name='district'
+              value={orderDetail.district}
+              onChange={handleChange}
+              required
+            />
             <input
               type='text'
               placeholder='City'
@@ -129,24 +150,14 @@ const PlaceOrder = () => {
               onChange={handleChange}
               required
             />
-            <input
-              type='text'
-              placeholder='State'
-              className='input-field w-[50%] md:w-[20vw]'
-              name='state'
-              value={orderDetail.state}
-              onChange={handleChange}
-              required
-            />
           </span>
           <input
             type='text'
-            placeholder='Land Mark'
+            placeholder='Land Mark (Optional)'
             className='input-field'
             name='landMark'
             value={orderDetail.landMark}
             onChange={handleChange}
-            required
           />
           <input
             type='text'
@@ -175,7 +186,16 @@ const PlaceOrder = () => {
           </span>
           <div>
             <p className='mt-4 mb-2 text-lg font-semibold'>Payment Method:</p>
-            <div className='w-[6rem] h-[4rem] bg-green-600 mb-6'></div>
+            <div className='flex gap-6'>
+              <div onClick={()=>setPayment('eSewa')} className={`${payment==='eSewa'?'ring-4':''} ring-lightColor w-[6rem] h-[4rem] bg-green-600 mb-6 `}>
+
+              </div>
+
+              <div onClick={()=>setPayment('On Delivery')} className={`${payment==='On Delivery'?'ring-4':''} ring-lightColor w-[6rem] h-[4rem] bg-green-600 mb-6`}>
+
+              </div>
+            </div>
+            
             <button className='buttons'>
               Place Order
             </button>
