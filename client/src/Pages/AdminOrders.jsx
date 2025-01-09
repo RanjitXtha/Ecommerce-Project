@@ -18,11 +18,12 @@ const AdminOrders = () => {
         }
         }
         getOrders();
-    },[])
+    },[]) 
   return (
     <div className='grid grid-cols-[10rem_1fr] margin gap-10'>
         <Sidebar />
         <section className=''>
+        <h1 className='mb-6 text-xl font-semibold'>Order List</h1>
            {
             orders && orders.map((order,index)=>(
                 <div className='grid grid-cols-[0.5fr_2fr_1.5fr_1fr_1fr] items-center gap-6'>

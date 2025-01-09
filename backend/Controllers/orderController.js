@@ -94,7 +94,6 @@ const addOrder = async (req, res) => {
 const getAllOrder = async(req,res) =>{
   try{
   const orders = await orderSchema.find({});
-  console.log(orders);
   if(orders){
   res.json({success:true,orders})
   }
@@ -106,10 +105,17 @@ const getAllOrder = async(req,res) =>{
 }
 
 const getUserOrder = async(req,res)=>{
- const {userId} = req.params;
+  console.log('running');
+  console.log(req.params)
+ const userId = req.params.user;
  console.log(userId);
+ try{
  const userOrders = await orderSchema.find({userId});
- console.log(userOrders);
+ res.json({success:true , orders:userOrders })
+ }catch(error){
+  console.log(error);
+  res.json({success:false , message:error})
+ }
 
 }
 

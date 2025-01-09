@@ -48,7 +48,7 @@ const Header = () => {
               :
               <div className=' bg-black text-white rounded-3xl py-[0.3rem] px-[0.3rem] sm:px-[1rem]'>
                 <button onClick={handleLogOut} className='flex gap-3 justify-center items-center'>
-                <img src={`http://localhost:5000/uploads/${user.profilePic}`} className='w-8 ring-2 ring-white h-8 rounded-full' alt="profilePic" />
+                <img src={`http://localhost:5000/uploads/${user.profilePic}`} loading="lazy" className='w-8 ring-2 ring-white h-8 rounded-full' alt="profilePic" />
                 <p className='hidden sm:block'>{user.username}</p>
 
                   
