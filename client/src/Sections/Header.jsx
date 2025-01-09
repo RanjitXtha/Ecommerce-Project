@@ -25,7 +25,7 @@ const Header = () => {
         <div className='hidden sm:flex gap-6 py-[1rem]'> 
             <NavLink to="/home">HOME<div className='transition-all ease-in-out underline h-[3px] rounded-3xl w-[70%] mx-auto bg-black opacity-0'></div></NavLink>
             <NavLink to="/shop">SHOP<div className='transition-all ease-in-out underline h-[3px] rounded-3xl w-[70%] mx-auto bg-black opacity-0'></div></NavLink>
-            <NavLink to="/about-us">ABOUT<div className='transition-all ease-in-out underline rounded-3xl h-[3px] w-[70%] mx-auto bg-black opacity-0'></div></NavLink>
+            <NavLink to="/about">ABOUT<div className='transition-all ease-in-out underline rounded-3xl h-[3px] w-[70%] mx-auto bg-black opacity-0'></div></NavLink>
             <NavLink to="/contact">CONTACT<div className='transition-all ease-in-out underline rounded-3xl h-[3px] w-[70%] mx-auto bg-black opacity-0'></div></NavLink>
         </div>
 
@@ -63,7 +63,7 @@ const Header = () => {
           <button onClick={()=>setMenu(false)} className='text-black bg-white rounded-3xl px-4 py-1'>Back</button>
           <NavLink onClick={()=>setMenu(false)} to="/home">HOME</NavLink>
           <NavLink onClick={()=>setMenu(false)} to="/shop">SHOP</NavLink>
-          <NavLink onClick={()=>setMenu(false)} to="/about-us">ABOUT</NavLink>
+          <NavLink onClick={()=>setMenu(false)} to="/about">ABOUT</NavLink>
           <NavLink onClick={()=>setMenu(false)} to="/contact">CONTACT</NavLink>
         </nav>
     </header>
