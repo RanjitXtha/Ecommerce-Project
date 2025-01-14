@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
     const [email , setEmail] = useState('');
@@ -26,14 +28,16 @@ const SignUp = () => {
         const data = await response.json();
 
         if(!data.success){
-          console.log(data.message);
+          toast.error(data.message)
           return;
         }
 
         if(data.token){
           localStorage.setItem('token',data.token);
-          console.log('successfully signed IN')
-          navigate('/')
+          console.log('successfully signed IN');
+          toast.success("Account created successfully.")
+          navigate('/');
+          navigate(0);
         }
 
       }catch(error){

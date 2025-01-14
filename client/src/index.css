@@ -55,13 +55,14 @@ html , body{
     opacity:1;
   }
 
+  .max-container {
+    max-width: 1920px;
+    margin: 0 auto;
+  }
 
 
 @layer components{
-  .max-container {
-    max-width: 1440px;
-    margin: 0 auto;
-  }
+ 
 
   .input-field{
     @apply ring-1 ring-customGrey py-1 px-2

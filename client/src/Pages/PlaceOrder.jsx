@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import eSewa from '../assets/esewa.webp';
+import OnDelivery from '../assets/ondelivery.png';
 
 const PlaceOrder = () => {
   
@@ -187,12 +189,12 @@ const PlaceOrder = () => {
           <div>
             <p className='mt-4 mb-2 text-lg font-semibold'>Payment Method:</p>
             <div className='flex gap-6'>
-              <div onClick={()=>setPayment('eSewa')} className={`${payment==='eSewa'?'ring-4':''} ring-lightColor w-[6rem] h-[4rem] bg-green-600 mb-6 `}>
-
+              <div onClick={()=>setPayment('eSewa')} className={`${payment==='eSewa'?'ring-4':''} ring-lightColor w-[8rem] h-[5rem] mb-6 `}>
+                  <img src={eSewa} alt="eSewa" className='object-contain' />
               </div>
 
-              <div onClick={()=>setPayment('On Delivery')} className={`${payment==='On Delivery'?'ring-4':''} ring-lightColor w-[6rem] h-[4rem] bg-green-600 mb-6`}>
-
+              <div onClick={()=>setPayment('On Delivery')} className={`${payment==='On Delivery'?'ring-4':''} ring-lightColor w-[8rem] h-[5rem]  mb-6`}>
+                <img src={OnDelivery} alt="On Delivery" className='object-contain' />
               </div>
             </div>
             

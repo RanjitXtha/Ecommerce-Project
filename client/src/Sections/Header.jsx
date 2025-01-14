@@ -4,6 +4,7 @@ import { TiThMenu } from "react-icons/ti";
 import { ShopContext } from '../Context/ShopContext';
 import { TiShoppingBag } from "react-icons/ti";
 import { AuthContext } from '../Context/AuthContext';
+import { FiPackage } from "react-icons/fi";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -29,7 +30,8 @@ const Header = () => {
             <NavLink to="/contact">CONTACT<div className='transition-all ease-in-out underline rounded-3xl h-[3px] w-[70%] mx-auto bg-black opacity-0'></div></NavLink>
         </div>
 
-        <div className='flex items-center gap-2 '>   
+        <div className='flex items-center gap-2 '> 
+
           <Link to="/cart" className='relative text-3xl  rounded-3xl '>
             <TiShoppingBag  />
             {
@@ -46,13 +48,17 @@ const Header = () => {
                 <button onClick={()=>navigate('/login')}>Log In</button>
               </div>
               :
-              <div className=' bg-black text-white rounded-3xl py-[0.3rem] px-[0.3rem] sm:px-[1rem]'>
-                <button onClick={handleLogOut} className='flex gap-3 justify-center items-center'>
-                <img src={`http://localhost:5000/uploads/${user.profilePic}`} loading="lazy" className='w-8 ring-2 ring-white h-8 rounded-full' alt="profilePic" />
-                <p className='hidden sm:block'>{user.username}</p>
+              <div className='group hover:rounded-b-none relative bg-black text-white rounded-3xl py-[0.3rem] px-[0.3rem] sm:px-[1rem]'>
+                <div className='flex gap-3 justify-center items-center '>
+                  <img src={`http://localhost:5000/uploads/${user.profilePic}`} loading="lazy" className='w-8 ring-2 ring-white h-8 rounded-full' alt="profilePic" />
+                  <p className='hidden sm:block'>{user.username}</p>
 
+                  <div className='group-hover:flex hidden z-50 absolute rounded-b-2xl top-[2.6rem] left-0 w-full  flex-col items-center gap-1 bg-black p-2'>
+                      <Link to="/orders">Orders</Link>
+                      <button onClick={handleLogOut}>Logout</button>
+                  </div>
                   
-                </button>
+                </div>
               </div>
           }
          

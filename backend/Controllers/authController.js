@@ -7,9 +7,7 @@ const ADMIN_EMAIL = 'admin@gmail.com';
 const ADMIN_PASSWORD = 'adminadmin'
 
 const LogIn = async(req,res)=>{
-    
     try{
-        console.log("running");
         const {email , password} = req.body;
         const user = await userSchema.findOne({email});
 

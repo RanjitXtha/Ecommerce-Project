@@ -1,29 +1,30 @@
 import React from 'react';
-import accesories from '../assets/Images/accesories.png';
+import accessories from '../assets/Images/accesories.png';
 import men from '../assets/Images/men.png';
 import women from '../assets/Images/women.png';
+import { useNavigate } from 'react-router-dom';
 
 
 const Category = () => {
-
+  const navigate = useNavigate();
   const categories = [
     {
       title: 'MEN',
       image : men,
       info1:'Dress For Men',
-      info2:'Exclusively contains momen\'s fashion clothing.'
+      info2:'Exclusively contains men\'s fashion clothing.'
     },
     {
       title: 'WOMEN',
       image : women,
-      info1:'Dress For Men',
-      info2:'Exclusively contains momen\'s fashion clothing.'
+      info1:'Dress For Women',
+      info2:'Exclusively contains women\'s fashion clothing.'
     },
     {
       title: 'ACCESSORIES',
-      image : accesories,
-      info1:'Dress For Men',
-      info2:'Exclusively contains momen\'s fashion clothing.'
+      image: accessories,
+      info1: 'Trendy Accessories',
+      info2: 'Contains a wide range of fashion accessories.'
     }
   ]
   return (
@@ -32,7 +33,7 @@ const Category = () => {
       <div className='flex flex-wrap  gap-x-4 gap-y-8 justify-evenly'>
         {
           categories.map((category,key)=>(
-            <div key={key} className='group category-cards'>
+            <div onClick={()=>navigate(`/shop?category=${category.title}`)} key={key} className='group category-cards'>
               <div className='w-full h-full'>
                 <img src={category.image} alt="men" className=' group-hover:translate-x-[30%] transition-all' />
               </div>

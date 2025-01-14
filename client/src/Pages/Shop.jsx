@@ -4,21 +4,45 @@ import { ShopContext } from '../Context/ShopContext';
 import { HiMenuAlt3 } from "react-icons/hi";
 import { IoSearch } from "react-icons/io5";
 import { LuMenu } from "react-icons/lu";
+import { useLocation } from 'react-router-dom';
 
 const Shop = () => {
     const shopData = useContext(ShopContext);
     const productData = shopData.products; 
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [categoryQueries, setCategoryQuery] = useState('');
 
     const [sort , setSort] = useState('relevant');
-    const [search , setSearch]= useState('');
+
+    const location = useLocation();
+
 
     useEffect(() => {
         setFilteredProducts(productData);
     }, [productData]);
 
+    const getQueryParams = (query) => {
+        return new URLSearchParams(query);
+    };
+
+    useEffect(() => {
+        const queryParams = getQueryParams(location.search);
+        const categoryQuery = queryParams.get('category');
+        if (categoryQuery) {
+            setCategoryQuery(categoryQuery.toLowerCase());
+            setCategories([categoryQuery.toLowerCase()]) 
+        }
+    }, [location.search]);
+
     const handleCategories = (e) => {
+        if(categoryQueries){
+            setCategories((prev) =>
+                prev.includes(categoryQueries)? prev.filter((item) => item !== categoryQueries): [...prev, category] 
+            
+            );
+            setCategoryQuery('');
+        }
         const category = e.target.value;
         console.log(category);
         setCategories((prev) =>

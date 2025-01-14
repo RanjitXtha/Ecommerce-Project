@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 import { AuthContext } from '../Context/AuthContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [email , setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error , setError] = useState('')
   const {setUser} = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -18,10 +19,7 @@ const Login = () => {
  
       const userData = {email,password};
 
-      if(password.length <8){
-        setError("Password must be 8 characters long");
-        console.log("password must be 8 character long");
-      }
+
       const response = await fetch('http://localhost:5000/api/user/login',{
         method:'POST',
         headers:{
@@ -33,15 +31,17 @@ const Login = () => {
       const data = await response.json();
       
       if(!data.success){
-        console.log(data.messsage);
+        toast.error(data.message)
         return;
       }
 
       if(data.token){
         localStorage.setItem('token',data.token);
         console.log('Login Sucessful');
+        toast.success("Successfully Logged In")
         navigate('/')
-        navigate(0);//forces refresh of the page
+        navigate(0);
+        //forces refresh of the page
       }
 
     }catch(error){
