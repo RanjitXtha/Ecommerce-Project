@@ -13,7 +13,7 @@ const Orders = () => {
     const getOrders =async()=>{
       console.log(user.userId)
       try{
-      const response = await fetch(`http://localhost:5000/api/order/${user.userId}/getOrder`);
+      const response = await fetch(`https://ecommerce-project-ierh.vercel.app/api/order/${user.userId}/getOrder`);
       const data = await response.json();
       if(!data.success){
        console.log('Error during fetching data');

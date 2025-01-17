@@ -25,7 +25,7 @@ const AdminHome = () => {
             products && products.map((product,index)=>(
               <div className='grid grid-cols-[3fr_repeat(4,1fr)] mb-[1rem] items-center text-textColor'>
                 <div className='flex gap-2 items-center'>
-                  <img className='w-[4rem] h-[4rem]' src={`http://localhost:5000/uploads/${product.image[0]}`} alt="product image" />
+                  <img className='w-[4rem] h-[4rem]' src={`https://ecommerce-project-ierh.vercel.app/uploads/${product.image[0]}`} alt="product image" />
                   <p>{product.title}</p>
                 </div>
                 <div>{product.category}</div>

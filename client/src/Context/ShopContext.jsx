@@ -11,7 +11,7 @@ export const ShopContextProvider = ({ children }) => {
       const getAllProducts = async()=>{
 
         try{
-        const response = await fetch('http://localhost:5000/api/admin/get-all-product');
+        const response = await fetch('https://ecommerce-project-ierh.vercel.app/api/admin/get-all-product');
         const product = await response.json();
         console.log("fetching product data")
         setProducts(product.productList);

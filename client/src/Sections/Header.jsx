@@ -50,7 +50,7 @@ const Header = () => {
               :
               <div className='group hover:rounded-b-none relative bg-black text-white rounded-3xl py-[0.3rem] px-[0.3rem] sm:px-[1rem]'>
                 <div className='flex gap-3 justify-center items-center '>
-                  <img src={`http://localhost:5000/uploads/${user.profilePic}`} loading="lazy" className='w-8 ring-2 ring-white h-8 rounded-full' alt="profilePic" />
+                  <img src={`https://ecommerce-project-ierh.vercel.app/uploads/${user.profilePic}`} loading="lazy" className='w-8 ring-2 ring-white h-8 rounded-full' alt="profilePic" />
                   <p className='hidden sm:block'>{user.username}</p>
 
                   <div className='group-hover:flex hidden z-50 absolute rounded-b-2xl top-[2.6rem] left-0 w-full  flex-col items-center gap-1 bg-black p-2'>

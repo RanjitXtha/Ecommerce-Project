@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
           return;
         }
 
-        const response = await fetch("http://localhost:5000/protected", {
+        const response = await fetch("https://ecommerce-project-ierh.vercel.app/protected", {
           headers: {
             Authorization: token,
           },

@@ -23,7 +23,7 @@ const ItemCards = ({product}) => {
   return (
     <Link className='item-card rounded-3xl overflow-hidden relative group transition-all flex-1 min-w-[16rem] max-w-[20rem] h-full' to={`/product/${product._id}`}>
       <div className='h-[22rem] overflow-hidden rounded-3xl'>
-      <img src={`http://localhost:5000/uploads/${product.image[0]}`} loading="lazy" className='transition-all  group-hover:scale-110   bg-customGrey ' alt={product.id} />
+      <img src={`https://ecommerce-project-ierh.vercel.app/uploads/${product.image[0]}`} loading="lazy" className='transition-all  group-hover:scale-110   bg-customGrey ' alt={product.id} />
       </div>
          
        

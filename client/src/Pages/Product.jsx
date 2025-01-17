@@ -79,14 +79,14 @@ const Product = () => {
         <div className='mt-[3rem] flex flex-col md:grid md:grid-cols-[1.5fr_2fr] gap-10 max-container'>
         <div className='flex flex-col gap-4'>
             <div className='w-full h-[40rem] md:h-auto'>
-                <img className='rounded-3xl' src={`http://localhost:5000/uploads/${product.image[currentIndex]}`} alt="" />
+                <img className='rounded-3xl' src={`https://ecommerce-project-ierh.vercel.app/uploads/${product.image[currentIndex]}`} alt="" />
             </div>
            
             <div className='grid grid-cols-3 w-full justify-between gap-2'>
                 {
                     product.image.map((pic,index)=>(
                         <div onClick={()=>setCurrentIndex(index)} key={index} className='max-w-[12rem] max-h-[12rem] '>
-                            <img  className={`w-full rounded-xl border-[2px] ${index === currentIndex?'border-black':''}`} src={`http://localhost:5000/uploads/${pic}`} alt="product-imag/e" />
+                            <img  className={`w-full rounded-xl border-[2px] ${index === currentIndex?'border-black':''}`} src={`https://ecommerce-project-ierh.vercel.app/uploads/${pic}`} alt="product-imag/e" />
                         </div>
                     ))
                 }

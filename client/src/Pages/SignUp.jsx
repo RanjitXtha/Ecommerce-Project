@@ -19,7 +19,7 @@ const SignUp = () => {
         userData.append('password',password);
         userData.append('profilePic',profile);
 
-        const response = await fetch('http://localhost:5000/api/user/signup',{
+        const response = await fetch('https://ecommerce-project-ierh.vercel.app/api/user/signup',{
           method:'POST',
         
           body:userData

@@ -133,7 +133,7 @@ const AddProduct = () => {
     });
     
     try {
-      const response = await fetch("http://localhost:5000/api/admin/add-product", {
+      const response = await fetch("https://ecommerce-project-ierh.vercel.app/api/admin/add-product", {
         method: "POST",
         headers:{
           Authorization: token,

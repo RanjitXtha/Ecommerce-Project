@@ -8,7 +8,7 @@ const AdminOrders = () => {
     useEffect(()=>{
         const getOrders = async()=>{
             try{
-            const response = await fetch('http://localhost:5000/api/order/getAllOrders')
+            const response = await fetch('https://ecommerce-project-ierh.vercel.app/api/order/getAllOrders')
             const data = await response.json();
             if(data.success){
                 setOrders(data.orders);

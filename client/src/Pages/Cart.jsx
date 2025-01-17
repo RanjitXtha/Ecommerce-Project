@@ -62,7 +62,7 @@ const Cart = () => {
             cartItems.map((item,index)=>(
               <div key={index} className='flex flex-col  md:grid md:grid-cols-[2fr_1.4fr] gap-6 mb-4 justify-between items-center'>
                 <div className='flex gap-10'>
-                  <img className="w-[6rem] h-[6rem] object-contain" src={`http://localhost:5000/uploads/${item.image}`} alt="image" />
+                  <img className="w-[6rem] h-[6rem] object-contain" src={`https://ecommerce-project-ierh.vercel.app/uploads/${item.image}`} alt="image" />
                   <div className='flex flex-col gap-1'>
                     <p className='font-semibold'>{item.title}</p>
                     <p className='text-lightColor text-lg'>{currency} {item.price}</p>

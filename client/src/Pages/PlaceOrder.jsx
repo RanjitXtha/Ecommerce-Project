@@ -58,7 +58,7 @@ const PlaceOrder = () => {
     };
   
     try {
-      const response = await fetch('http://localhost:5000/api/order/addOrder', {
+      const response = await fetch('https://ecommerce-project-ierh.vercel.app/api/order/addOrder', {
         method: 'POST',
         headers: {
           Authorization: user,
