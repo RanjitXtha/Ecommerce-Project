@@ -1,4 +1,4 @@
-
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -10,7 +10,7 @@ const authUser  = require('./Middleware/auth');
 const adminAuth = require('./Middleware/adminAuth');
 
 
-const dbURL = 'mongodb+srv://alienshooter:alienshooterpassword_123@cluster0.rbry7.mongodb.net/ecommerceSite?retryWrites=true&w=majority&appName=Cluster0';
+const dbURL = process.env.DB_URL;
 const app = express();
 app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(function(req, res, next) {

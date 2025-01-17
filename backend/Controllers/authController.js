@@ -1,10 +1,11 @@
+require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 
 const userSchema = require('../Schema/userSchema');
-const JWT_SECRET = 'ecommerce-project';
-const ADMIN_EMAIL = 'admin@gmail.com';
-const ADMIN_PASSWORD = 'adminadmin'
+const JWT_SECRET = process.env.JWT_SECRET;
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 const LogIn = async(req,res)=>{
     try{
