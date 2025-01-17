@@ -4,8 +4,8 @@ const crypto = require('crypto');
 
 const esewaConfig = {
   merchantId: "EPAYTEST", 
-  successUrl: "http://localhost:5173/cart?status=success&",
-  failureUrl: "http://localhost:5173/cart?status=failure&",
+  successUrl: "https://ecommerce-project-git-main-ranjitxthas-projects.vercel.app/cart?status=success&",
+  failureUrl: "https://ecommerce-project-git-main-ranjitxthas-projects.vercel.app/cart?status=failure&",
   esewaPaymentUrl: "https://rc-epay.esewa.com.np/api/epay/main/v2/form",
   secret: "8gBm/:&EnhH.1/q",
 };
