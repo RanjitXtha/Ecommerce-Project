@@ -12,9 +12,13 @@ const adminAuth = require('./Middleware/adminAuth');
 
 const dbURL = process.env.DB_URL;
 const app = express();
+app.options('*', cors());
 app.use(cors({
-    origin: 'https://ecommerce-project-ochre.vercel.app'
-  }));
+    origin: ["http://localhost:5173","https://ecommerce-project-ochre.vercel.app"],
+    methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // app.use(function(req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "*");
