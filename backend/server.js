@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 const path = require('path');
 const userRouter = require('./Routes/userRoute');
 const productRouter = require('./Routes/productRoute');
@@ -12,16 +12,15 @@ const adminAuth = require('./Middleware/adminAuth');
 
 const dbURL = process.env.DB_URL;
 const app = express();
-
-const cors = require('cors');
-app.options('*', cors());
 app.use(cors({
-    origin: ["http://localhost:5173","https://ecommerce-project-ochre.vercel.app"],
-    methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+    origin: 'https://ecommerce-project-ochre.vercel.app'
+  }));
 
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+//   });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
