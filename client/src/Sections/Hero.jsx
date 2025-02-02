@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom'
 const Hero = () => {
     const navigate = useNavigate();
   return (
-    <div className='relative padding  flex flex-col md:flex-row  gap-6 bg-customGrey margin rounded-3xl'>
-        <div className='w-full md:w-[50%]'>
-            <p className="text-4xl lg:text-6xl mt-[3rem]  md:mt-[4.5rem] font-bold">
+    <div className='2xl:mt-[1rem] relative padding  flex flex-col md:flex-row bg-customGrey  gap-6 margin rounded-3xl'>
+        <div className='flex flex-col h-1/2 items-start justify-evenly gap-[2rem] w-full md:w-[50%]'>
+            <p className="text-4xl lg:text-6xl mt-[3rem]  font-bold">
                 DIVE INTO THE WORLD OF FASHION AND LUXURY
             </p>
 
-            <p className='mt-[2rem]'>
+            <p>
                 Dive into the world of fashion and luxury.
                 Explore our collection and redefine your style.
             </p>

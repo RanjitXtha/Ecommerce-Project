@@ -18,7 +18,7 @@ const Header = () => {
   }
   
   return (
-    <header className='flex justify-between px-[1rem] sm:px-[3rem]  max-container w-full'>
+    <header className='margin my-0 max-container w-full grid grid-flow-col justify-between px-[1rem] sm:px-[3rem] 2xl:px-[5rem]'>
         <div className='text-2xl font-bold py-[1rem] flex items-center gap-4'>
             <button onClick={()=>setMenu(true)} className='block sm:hidden'><TiThMenu className='text-3xl' /></button> <a href="/">Luxury</a>
         </div>

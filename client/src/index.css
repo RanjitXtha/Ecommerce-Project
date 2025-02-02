@@ -60,6 +60,13 @@ html , body{
     margin: 0 auto;
   }
 
+  @media (min-width:1380px){
+    html{
+      font-size: 130%;
+     
+  }
+  }
+
 
 @layer components{
  
@@ -69,11 +76,11 @@ html , body{
   }
 
   .padding{
-    @apply px-[2rem] sm:px-[3rem] md:px-[4rem] py-[1rem]
+    @apply px-[2rem] sm:px-[3rem] md:px-[4rem] 2xl:px-[5rem] py-[1rem]
   }
 
   .margin{
-    @apply mx-[1rem] sm:mx-[2rem] md:mx-[3rem] mb-[6rem]
+    @apply mx-[1rem] sm:mx-[2rem] md:mx-[3rem] 2xl:mx-[5rem] mb-[6rem]
   }
 
   .buttons{
@@ -81,7 +88,11 @@ html , body{
   }
 
   .category-cards {
-    @apply relative flex-1  h-[25rem] min-w-[18rem] max-w-[22rem] transition-all bg-customGrey rounded-2xl overflow-hidden;
+    @apply relative flex-1 h-[24rem] 2xl:h-[27rem] min-w-[18rem] max-w-[22rem] transition-all bg-customGrey rounded-2xl overflow-hidden;
+  }
+
+  .category-cards img{
+    @apply 2xl:scale-125 2xl:translate-y-6
   }
 
   .title{
