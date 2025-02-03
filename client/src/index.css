@@ -62,7 +62,7 @@ html , body{
 
   @media (min-width:1380px){
     html{
-      font-size: 130%;
+      font-size: 145%;
      
   }
   }
@@ -92,7 +92,7 @@ html , body{
   }
 
   .category-cards img{
-    @apply 2xl:scale-125 2xl:translate-y-6
+    @apply 2xl:scale-125 2xl:translate-y-12 2xl:translate-x-10
   }
 
   .title{
