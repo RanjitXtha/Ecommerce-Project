@@ -1,4 +1,5 @@
 const orderSchema = require('../Schema/orderSchema');
+const productSchema  = require('../Schema/productSchema');
 const { v4: uuidv4 } = require('uuid');
 const crypto = require('crypto');
 
@@ -17,6 +18,24 @@ const addOrder = async (req, res) => {
   console.log(cartItems);
   console.log(`${userId} ${amount} ${address} ${status} ${paymentMethod} ${payment}`);
 
+  const subtractItem = async () => {
+    try {
+      for (const element of cartItems) {
+        const item = await productSchema.findByIdAndUpdate(
+          element._id,
+          { $inc: { stock: -1 } },
+          { new: true }
+        );
+        
+        if (item) {
+          console.log("Updated item:", item);
+        }
+      }
+    } catch (error) {
+      console.error("Error updating stock:", error.message);
+    }
+  };
+
   try {
     const order = new orderSchema({
       userId,
@@ -30,29 +49,27 @@ const addOrder = async (req, res) => {
 
     if (paymentMethod === 'eSewa') {
       const transactionUuid = uuidv4();
-      console.log(transactionUuid);
       const parsedAmount = parseFloat(amount);
       const totalAmount = parsedAmount + 100;
-
       const dataToHash = `total_amount=${totalAmount},transaction_uuid=${transactionUuid},product_code=${esewaConfig.merchantId}`;
       const secretKey = esewaConfig.secret;
       const signature = crypto.createHmac('sha256', secretKey).update(dataToHash).digest('base64');
 
 
-    let paymentData = {
-      amount: parsedAmount,
-      failure_url: esewaConfig.failureUrl,
-      product_delivery_charge: "100",
-      product_service_charge: "0",
-      product_code: esewaConfig.merchantId,
-      signature,
-      signed_field_names: "total_amount,transaction_uuid,product_code",
-      success_url: esewaConfig.successUrl,
-      tax_amount: "0",
-      total_amount: totalAmount,
-      transaction_uuid: transactionUuid,
-      
-    };
+      let paymentData = {
+        amount: parsedAmount,
+        failure_url: esewaConfig.failureUrl,
+        product_delivery_charge: "100",
+        product_service_charge: "0",
+        product_code: esewaConfig.merchantId,
+        signature,
+        signed_field_names: "total_amount,transaction_uuid,product_code",
+        success_url: esewaConfig.successUrl,
+        tax_amount: "0",
+        total_amount: totalAmount,
+        transaction_uuid: transactionUuid,
+        
+      };
 
       try {
         const paymentResponse = await fetch(`${esewaConfig.esewaPaymentUrl}?${new URLSearchParams(paymentData)}`, {
@@ -60,7 +77,7 @@ const addOrder = async (req, res) => {
         });
 
         if (paymentResponse.ok) {
-          console.log( paymentResponse.url);
+          console.log("method:eSewa");
           await order.save();
           
           return res.json({
@@ -81,11 +98,14 @@ const addOrder = async (req, res) => {
         
       }
     } else {
+      console.log("method:cashondelivery");
+      subtractItem();
       await order.save();
       return res.json({ success: true, message: 'Order added successfully', orderId: order._id });
     }
   } catch (error) {
     console.log(error);
+   
     return res.status(500).json({ success: false, message: error.message });
   }
 };

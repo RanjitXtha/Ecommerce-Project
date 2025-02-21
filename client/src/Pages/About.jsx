@@ -4,7 +4,7 @@ import img2 from '../assets/Images/women.jpg';
 
 const About = () => {
   return (
-    <section className="bg-gray-100 py-12 margin rounded-3xl">
+    <section className="py-12 margin rounded-3xl">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 className="text-4xl font-bold text-center mb-8">About Us</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

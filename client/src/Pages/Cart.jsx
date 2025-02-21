@@ -25,6 +25,7 @@ const Cart = () => {
   useEffect(()=>{
     const totalPrice = cartItems.reduce((sum,item)=>sum+item.quantity*item.price,0);
     setTotal(parseFloat(totalPrice.toFixed(2)));
+    console.log(cartItems)
   },[cartItems]);
  
 
