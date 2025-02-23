@@ -33,6 +33,7 @@ const LogIn = async(req,res)=>{
 }
 
 const SignUp = async(req,res)=>{
+    console.log("recieved");
     try{
         const {email,username,password} = req.body;
         const profilePic = req.file ? req.file.filename : null;
