@@ -1,6 +1,6 @@
 const productSchema  = require('../Schema/productSchema');
-const fs = require("fs");
-const path = require("path");
+// const fs = require("fs");
+// const path = require("path");
 
 const addProduct = async (req,res)=>{
     const {title , description , price , category , 
@@ -82,14 +82,14 @@ const removeProduct = async (req, res) => {
         }
 
 
-        deletedProduct.image.forEach((filename) => {
-            const filePath = path.join(__dirname, "uploads", filename);
-            fs.unlink(filePath, (err) => {
-                if (err) {
-                    console.error(`Failed to delete image ${filename}:`, err);
-                }
-            });
-        });
+        // deletedProduct.image.forEach((filename) => {
+        //     const filePath = path.join(__dirname, "uploads", filename);
+        //     fs.unlink(filePath, (err) => {
+        //         if (err) {
+        //             console.error(`Failed to delete image ${filename}:`, err);
+        //         }
+        //     });
+        // });
 
         res.json({ message: "Product and associated images deleted successfully" });
     } catch (error) {
