@@ -1,17 +1,21 @@
 import { createContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 //import products from "../data";
 
 export const ShopContext = createContext();
 
 export const ShopContextProvider = ({ children }) => {
     const[products , setProducts] = useState([]);
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const status = params.get('status');
 
     useEffect(()=>{
 
       const getAllProducts = async()=>{
 
         try{
-        const response = await fetch('https://ecommerce-project-ierh.vercel.app/api/admin/get-all-product');
+        const response = await fetch(`https://ecommerce-project-ierh.vercel.app/api/admin/get-all-product`);
         const product = await response.json();
         console.log("fetching product data")
         setProducts(product.productList);
@@ -21,7 +25,7 @@ export const ShopContextProvider = ({ children }) => {
       }
 
       getAllProducts();
-    },[])
+    },[status])
 
  
   const currency = "Rs.";

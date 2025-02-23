@@ -6,6 +6,7 @@ import { TiShoppingBag } from "react-icons/ti";
 import { AuthContext } from '../Context/AuthContext';
 import { FiPackage } from "react-icons/fi";
 
+
 const Header = () => {
   const navigate = useNavigate();
   const [menu , setMenu] = useState(false);

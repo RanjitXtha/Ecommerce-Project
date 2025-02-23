@@ -22,6 +22,7 @@ import AdminOrders from './Pages/AdminOrders';
 import { AdminAuthContext } from './Context/AdminAuthContext';
 import { useContext } from 'react';
 import { AuthContext } from './Context/AuthContext';
+import { ShopContextProvider } from './Context/ShopContext.jsx';
 
 function App() {
   const {admin} = useContext(AdminAuthContext);
@@ -30,6 +31,7 @@ function App() {
     <div className='flex flex-col min-h-[100vh]'>
 
         <Router>
+        <ShopContextProvider>
         <ToastContainer />
 
         <Header />
@@ -53,7 +55,9 @@ function App() {
             <Route  path="/admin/add-product" element={<AdminRoute><AddProduct /></AdminRoute>} />
           </Routes>
         </div>
+
         <Footer />
+        </ShopContextProvider>
         </Router>
     </div>   
   )

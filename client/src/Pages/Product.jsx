@@ -9,6 +9,7 @@ import { ShopContext } from '../Context/ShopContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const Product = () => {
     const navigate = useNavigate();
     const {currency , delivery_fee , addToCart , products}  = useContext(ShopContext);
@@ -20,7 +21,6 @@ const Product = () => {
     const [quantity , setQuantity] = useState(1);
 
     useEffect(()=>{
-        console.log(products);
         const product = products.find(item =>item._id === productId);
         setProduct(product);
     },[productId])
@@ -45,8 +45,9 @@ const Product = () => {
             return;
         }
         const productData = {
-            size , color , id:product.id , price:(product.price - product.discount*product.price/100).toFixed(2), title:product.title , image: product.image[0] , quantity , stock:product.stock
+            size , color , id:product._id , price:(product.price - product.discount*product.price/100).toFixed(2), title:product.title , image: product.image[0] , quantity , stock:product.stock
         }
+        console.log(productData)
         addToCart(productData);
 
     }
@@ -61,7 +62,7 @@ const Product = () => {
             return;
         }
         const productData = {
-            size , color , id:product.id , price:(product.price - product.discount*product.price/100).toFixed(2), title:product.title , image: product.image[0] , quantity , stock:product.stock
+            size , color , id:product._id , price:(product.price - product.discount*product.price/100).toFixed(2), title:product.title , image: product.image[0] , quantity , stock:product.stock
         }
 
         addToCart(productData);

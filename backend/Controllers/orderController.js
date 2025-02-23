@@ -15,20 +15,25 @@ const addOrder = async (req, res) => {
   console.log("req received");
   const { userId, items, amount, address, status, paymentMethod, payment } = req.body;
   const cartItems = JSON.parse(items);
+  console.log("cartItems:")
   console.log(cartItems);
-  console.log(`${userId} ${amount} ${address} ${status} ${paymentMethod} ${payment}`);
+
+
 
   const subtractItem = async () => {
+    console.log("subtracting");
     try {
       for (const element of cartItems) {
         const item = await productSchema.findByIdAndUpdate(
-          element._id,
+          element.id,
           { $inc: { stock: -1 } },
           { new: true }
         );
         
         if (item) {
           console.log("Updated item:", item);
+        }else{
+          console.log("not found")
         }
       }
     } catch (error) {
@@ -78,6 +83,7 @@ const addOrder = async (req, res) => {
 
         if (paymentResponse.ok) {
           console.log("method:eSewa");
+          subtractItem();
           await order.save();
           
           return res.json({

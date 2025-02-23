@@ -3,6 +3,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../Context/ShopContext';
 
+
 const ItemCards = ({product}) => {
   const {currency , addToCart} = useContext(ShopContext);
 

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const SignUp = () => {
     const [email , setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -19,7 +20,7 @@ const SignUp = () => {
         userData.append('password',password);
         userData.append('profilePic',profile);
 
-        const response = await fetch('https://ecommerce-project-ierh.vercel.app/api/user/signup',{
+        const response = await fetch(`https://ecommerce-project-ierh.vercel.app/api/user/signup`,{
           method:'POST',
         
           body:userData

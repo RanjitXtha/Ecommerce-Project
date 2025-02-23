@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const AdminLogin = () => {
      const [email , setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -11,7 +12,7 @@ const AdminLogin = () => {
         e.preventDefault();
         try{
         const userData = {email,password};
-        const response = await fetch('https://ecommerce-project-ierh.vercel.app/api/admin/login',{
+        const response = await fetch(`https://ecommerce-project-ierh.vercel.app/api/admin/login`,{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'

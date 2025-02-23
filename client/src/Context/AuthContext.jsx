@@ -15,13 +15,14 @@ export const AuthProvider = ({ children }) => {
           return;
         }
 
-        const response = await fetch("https://ecommerce-project-ierh.vercel.app/protected", {
+        const response = await fetch(`https://ecommerce-project-ierh.vercel.app/protected`, {
           headers: {
             Authorization: token,
           },
         });
 
         const data = await response.json();
+        console.log(data);
     
         if (!data.success) {
           console.log(data.message);

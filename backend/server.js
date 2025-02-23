@@ -51,7 +51,7 @@ app.get('/protected',authUser,(req,res)=>{
 
 app.get('/admin/protected',adminAuth,(req,res)=>{
     res.json({success:true,message:'You are authenticated as admin.',
-        user:{email:req.body.email,role:req.body.role}
+        user:{email:req.user.email,role:req.user.role}
     }
     )
 })

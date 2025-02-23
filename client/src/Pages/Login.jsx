@@ -4,6 +4,7 @@ import { AuthContext } from '../Context/AuthContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const Login = () => {
   const [email , setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,7 +21,7 @@ const Login = () => {
       const userData = {email,password};
 
 
-      const response = await fetch('https://ecommerce-project-ierh.vercel.app/api/user/login',{
+      const response = await fetch(`https://ecommerce-project-ierh.vercel.app/api/user/login`,{
         method:'POST',
         headers:{
           'Content-Type':'application/json',

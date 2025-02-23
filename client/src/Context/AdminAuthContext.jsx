@@ -15,7 +15,7 @@ export const AdminAuthProvider = ({ children }) => {
           return;
         }
 
-        const response = await fetch("https://ecommerce-project-ierh.vercel.app/admin/protected", {
+        const response = await fetch(`https://ecommerce-project-ierh.vercel.app/admin/protected`, {
           headers: {
             Authorization: token,
           },
@@ -30,7 +30,7 @@ export const AdminAuthProvider = ({ children }) => {
           setAdmin(null);
           return;
         }
-        // console.log(data.user)
+         console.log(data.user)
         setAdmin(data.user);
       } catch (error) {
         console.error("Authentication Error:", error);

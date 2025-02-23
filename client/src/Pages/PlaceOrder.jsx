@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import eSewa from '../assets/esewa.webp';
 import OnDelivery from '../assets/ondelivery.png';
 
+
 const PlaceOrder = () => {
   
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ const PlaceOrder = () => {
     };
   
     try {
-      const response = await fetch('https://ecommerce-project-ierh.vercel.app/api/order/addOrder', {
+      const response = await fetch(`https://ecommerce-project-ierh.vercel.app/api/order/addOrder`, {
         method: 'POST',
         headers: {
           Authorization: user,
@@ -76,7 +77,7 @@ const PlaceOrder = () => {
           }else{
             toast.success('Order Placed');
             setCartItems([]);
-            navigate('/cart');
+            navigate('/cart?status=ordered');
           }
          
         }else{
@@ -102,7 +103,7 @@ const PlaceOrder = () => {
               name='firstName'
               value={orderDetail.firstName}
               onChange={handleChange}
-              required
+             
             />
             <input
               placeholder='Last Name'
@@ -111,7 +112,7 @@ const PlaceOrder = () => {
               name='lastName'
               value={orderDetail.lastName}
               onChange={handleChange}
-              required
+            
             />
           </span>
 
@@ -122,7 +123,7 @@ const PlaceOrder = () => {
             name='email'
             value={orderDetail.email}
             onChange={handleChange}
-            required
+        
           />
           <input
             type='text'
@@ -131,7 +132,7 @@ const PlaceOrder = () => {
             name='province'
             value={orderDetail.province}
             onChange={handleChange}
-            required
+         
           />
           <span className='flex justify-between gap-4'>
             <input
@@ -141,7 +142,7 @@ const PlaceOrder = () => {
               name='district'
               value={orderDetail.district}
               onChange={handleChange}
-              required
+            
             />
             <input
               type='text'
@@ -150,7 +151,7 @@ const PlaceOrder = () => {
               name='city'
               value={orderDetail.city}
               onChange={handleChange}
-              required
+        
             />
           </span>
           <input
@@ -168,7 +169,7 @@ const PlaceOrder = () => {
             name='phoneNumber'
             value={orderDetail.phoneNumber}
             onChange={handleChange}
-            required
+          
           />
         </div>
 

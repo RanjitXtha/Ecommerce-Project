@@ -47,13 +47,47 @@ const getProductList = async (req,res)=>{
    }
 }
 
-const getProduct = async (req,res)=>{
-    
+const updateProduct = async (req,res)=>{
+    console.log(req.body);
+    const { _id, title, category, price, discount, stock } = req.body;
+
+    try {
+        const updatedProduct = await productSchema.findByIdAndUpdate(
+            _id,
+            { title, category, price, discount, stock },
+            { new: true }
+        );
+
+        if (!updatedProduct) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+
+        res.json({ message: "Product updated successfully", updatedProduct });
+    } catch (error) {
+        console.error("Error updating product:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
 }
 
 const removeProduct = async (req,res)=>{
+    const { id } = req.params;
+    console.log(id);
+    console.log("recieved");
+
+    try {
+        const deletedProduct = await productSchema.findByIdAndDelete(id);
+
+        if (!deletedProduct) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+
+        res.json({ message: "Product deleted successfully" });
+    } catch (error) {
+        console.error("Error deleting product:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
     
 }
 
-module.exports = {addProduct , getProduct , getProductList , removeProduct};
+module.exports = {addProduct , updateProduct , getProductList , removeProduct};
 

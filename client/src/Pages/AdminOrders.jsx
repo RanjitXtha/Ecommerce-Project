@@ -3,12 +3,13 @@ import { ShopContext } from '../Context/ShopContext';
 import Sidebar from '../Sections/Sidebar';
 import { PiPackageFill } from "react-icons/pi";
 
+
 const AdminOrders = () => {
     const [orders ,setOrders] = useState([]);
     useEffect(()=>{
         const getOrders = async()=>{
             try{
-            const response = await fetch('https://ecommerce-project-ierh.vercel.app/api/order/getAllOrders')
+            const response = await fetch(`https://ecommerce-project-ierh.vercel.app/api/order/getAllOrders`)
             const data = await response.json();
             if(data.success){
                 setOrders(data.orders);
