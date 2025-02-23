@@ -5,7 +5,7 @@ import Sidebar from '../Sections/Sidebar';
 import { useEffect , useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+const BACKEND_URL = process.env.BACKEND_URL;
 
 const AdminHome = () => {
   const {logout , admin} = useContext(AdminAuthContext);

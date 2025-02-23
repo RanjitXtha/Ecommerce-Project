@@ -1,7 +1,8 @@
 const productSchema  = require('../Schema/productSchema');
+const fs = require("fs");
+const path = require("path");
 
 const addProduct = async (req,res)=>{
-    console.log("reccieved")
     const {title , description , price , category , 
         tags , sizes , colors , trending , discount,
         stock , information
@@ -13,8 +14,6 @@ const addProduct = async (req,res)=>{
     const parsedColors = JSON.parse(colors);
     const parsedInformation = JSON.parse(information);
     
-    console.log(req.body);
-    //console.log(req.files);
     const imagePaths = req.files.map((file) => file.filename);
 try{
     const newProduct = new productSchema({
@@ -69,25 +68,35 @@ const updateProduct = async (req,res)=>{
     }
 }
 
-const removeProduct = async (req,res)=>{
+const removeProduct = async (req, res) => {
     const { id } = req.params;
     console.log(id);
-    console.log("recieved");
+    console.log("received");
 
     try {
         const deletedProduct = await productSchema.findByIdAndDelete(id);
+        console.log(deletedProduct);
 
         if (!deletedProduct) {
             return res.status(404).json({ message: "Product not found" });
         }
 
-        res.json({ message: "Product deleted successfully" });
+
+        deletedProduct.image.forEach((filename) => {
+            const filePath = path.join(__dirname, "uploads", filename);
+            fs.unlink(filePath, (err) => {
+                if (err) {
+                    console.error(`Failed to delete image ${filename}:`, err);
+                }
+            });
+        });
+
+        res.json({ message: "Product and associated images deleted successfully" });
     } catch (error) {
         console.error("Error deleting product:", error);
         res.status(500).json({ message: "Internal server error" });
     }
-    
-}
+};
 
 module.exports = {addProduct , updateProduct , getProductList , removeProduct};
 
