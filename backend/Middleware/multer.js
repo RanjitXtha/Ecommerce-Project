@@ -1,13 +1,17 @@
 const multer  = require('multer');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+require('dotenv').config();
+const cloudinary = require('cloudinary').v2;
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'backend/uploads');
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'profile_pics',
+    allowed_formats: ['jpg', 'png', 'jpeg'],
+    public_id: (req, file) => file.originalname.split('.')[0] + '-' + Date.now(),
   },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname);
-  }
 });
+
 const upload = multer({ storage: storage });
 
 module.exports = upload;

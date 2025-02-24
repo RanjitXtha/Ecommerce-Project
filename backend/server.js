@@ -9,6 +9,13 @@ const orderRouter = require('./Routes/orderRoute');
 const authUser  = require('./Middleware/auth');
 const adminAuth = require('./Middleware/adminAuth');
 
+const cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 const dbURL = process.env.DB_URL;
 const app = express();

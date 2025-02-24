@@ -14,7 +14,7 @@ const addProduct = async (req,res)=>{
     const parsedColors = JSON.parse(colors);
     const parsedInformation = JSON.parse(information);
     
-    const imagePaths = req.files.map((file) => file.filename);
+    const imagePaths = req.files.map((file) => file.path);
 try{
     const newProduct = new productSchema({
         title, description ,price,category,tags:parsedTags,sizes:parsedSizes,
@@ -81,15 +81,6 @@ const removeProduct = async (req, res) => {
             return res.status(404).json({ message: "Product not found" });
         }
 
-
-        // deletedProduct.image.forEach((filename) => {
-        //     const filePath = path.join(__dirname, "uploads", filename);
-        //     fs.unlink(filePath, (err) => {
-        //         if (err) {
-        //             console.error(`Failed to delete image ${filename}:`, err);
-        //         }
-        //     });
-        // });
 
         res.json({ message: "Product and associated images deleted successfully" });
     } catch (error) {

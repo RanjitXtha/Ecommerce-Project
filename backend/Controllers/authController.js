@@ -36,7 +36,7 @@ const SignUp = async(req,res)=>{
     console.log("recieved");
     try{
         const {email,username,password} = req.body;
-        const profilePic = req.file ? req.file.filename : null;
+        const profilePic = req.file ? req.file.path : null;
         console.log(profilePic + 'this is a profile')
         console.log(username+email+profilePic);
         const userExists = await userSchema.findOne({email});

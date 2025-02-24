@@ -82,7 +82,9 @@ const AdminHome = () => {
       {editedProducts.map((product, index) => (
         <div key={product._id} className='grid grid-cols-[3fr_repeat(4,1fr)_2fr] mb-[1rem] items-center text-textColor'>
           <div className='flex gap-2 items-center'>
-            <img className='w-[4rem] h-[4rem]' src={`https://ecommerce-project-ierh.vercel.app/uploads/${product.image[0]}`} alt="product image" />
+            <img className='w-[4rem] h-[4rem]' src={product.image[0].startsWith("http") 
+    ? product.image[0] 
+    : `https://ecommerce-project-ierh.vercel.app/uploads/${product.image[0]}`} alt="product image" />
             <input 
               type="text"
               value={product.title}
