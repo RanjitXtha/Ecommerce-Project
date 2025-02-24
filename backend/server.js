@@ -21,7 +21,10 @@ const dbURL = process.env.DB_URL;
 const app = express();
 app.options('*', cors());
 app.use(cors({
-    origin: "*",
+    origin: ["http://localhost:5173/","https://ecommerce-project-ev9js14kc-ranjitxthas-projects.vercel.app/",
+        "https://ecommerce-project-ev9js14kc-ranjitxthas-projects.vercel.app","https://ecommerce-project-ochre.vercel.app/",
+        "https://ecommerce-project-git-main-ranjitxthas-projects.vercel.app"
+    ],
     methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
@@ -29,8 +32,8 @@ app.use(cors({
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers",
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version')
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
   });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
