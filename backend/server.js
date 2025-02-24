@@ -21,9 +21,9 @@ const dbURL = process.env.DB_URL;
 const app = express();
 app.options('*', cors());
 app.use(cors({
-    origin: ["http://localhost:5173/","https://ecommerce-project-ev9js14kc-ranjitxthas-projects.vercel.app/",
-        "https://ecommerce-project-ev9js14kc-ranjitxthas-projects.vercel.app/","https://ecommerce-project-ochre.vercel.app/",
-        "https://ecommerce-project-git-main-ranjitxthas-projects.vercel.app/"
+    origin: ["http://localhost:5173","https://ecommerce-project-ev9js14kc-ranjitxthas-projects.vercel.app",
+        "https://ecommerce-project-ev9js14kc-ranjitxthas-projects.vercel.app","https://ecommerce-project-ochre.vercel.app/",
+        "https://ecommerce-project-git-main-ranjitxthas-projects.vercel.app"
     ],
     methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
